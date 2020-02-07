@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Main from './main';
+import Main from '../main/main';
 
 // eslint-disable-next-line react/prop-types
 function App({specialFilm}) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import reactDOM from 'react-dom';
 
-import App from './components/app';
+import App from './components/app/app';
 
 const specialFilm = {
   name: `Shawshank's Eleven`,
