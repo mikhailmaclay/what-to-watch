@@ -1,12 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-// eslint-disable-next-line react/prop-types
 function Main({specialFilm}) {
   return (
     <>
       <section className="movie-card">
         <div className="movie-card__bg">
-          {/* eslint-disable-next-line react/prop-types */}
           <img src="img/bg-the-grand-budapest-hotel.jpg" alt={specialFilm.name}/>
         </div>
 
@@ -31,17 +30,13 @@ function Main({specialFilm}) {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              {/* eslint-disable-next-line react/prop-types */}
               <img src="img/the-grand-budapest-hotel-poster.jpg" alt={specialFilm.name} width="218" height="327"/>
             </div>
 
             <div className="movie-card__desc">
-              {/* eslint-disable-next-line react/prop-types */}
               <h2 className="movie-card__title">{specialFilm.name}</h2>
               <p className="movie-card__meta">
-                {/* eslint-disable-next-line react/prop-types */}
                 <span className="movie-card__genre">{specialFilm.genre}</span>
-                {/* eslint-disable-next-line react/prop-types */}
                 <span className="movie-card__year">{specialFilm.releaseDate}</span>
               </p>
 
@@ -310,5 +305,13 @@ function Main({specialFilm}) {
     </>
   );
 }
+
+Main.propTypes = {
+  specialFilm: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    releaseDate: PropTypes.string.isRequired
+  }).isRequired
+};
 
 export default Main;
