@@ -3,10 +3,10 @@ import reactDOM from 'react-dom';
 
 import App from './components/app/app';
 
-const specialFilm = {
+const specialMovie = {
   name: `Shawshank's Eleven`,
   genre: `Criminal`,
   releaseDate: `2001`
 };
 
-reactDOM.render(<App specialFilm={specialFilm}/>, document.getElementById(`root`));
+reactDOM.render(<App specialMovie={specialMovie}/>, document.getElementById(`root`));

@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 
 import Main from '../main/main';
 
-function App({specialFilm}) {
-  return <Main specialFilm={specialFilm}/>;
+function App({specialMovie}) {
+  const onMovieCardTitleClick = () => {};
+
+  return <Main specialMovie={specialMovie} onMovieCardTitleClick={onMovieCardTitleClick}/>;
 }
 
 App.propTypes = {
-  specialFilm: PropTypes.shape({
+  specialMovie: PropTypes.shape({
     name: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     releaseDate: PropTypes.string.isRequired

@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 
 import App from './app';
 
-const specialFilm = {
+const specialMovie = {
   name: `The Daddy Effect`,
   genre: `Drama`,
   releaseDate: `2004`
@@ -11,7 +11,7 @@ const specialFilm = {
 
 it(`<App/> should be rendered`, () => {
   const result = renderer.create(
-      <App specialFilm={specialFilm}/>
+      <App specialMovie={specialMovie}/>
   ).toJSON();
 
   expect(result).toMatchSnapshot();

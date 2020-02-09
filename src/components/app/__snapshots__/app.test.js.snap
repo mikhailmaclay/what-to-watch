@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<App/> should render <Main/> 1`] = `
+exports[`<App/> should be rendered 1`] = `
 Array [
   <section
     className="movie-card"
@@ -80,6 +80,7 @@ Array [
         >
           <h2
             className="movie-card__title"
+            onClick={[Function]}
           >
             The Daddy Effect
           </h2>

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Main/> should render information about the special film 1`] = `
+exports[`<Main/> should render correctly 1`] = `
 Array [
   <section
     className="movie-card"
@@ -80,6 +80,7 @@ Array [
         >
           <h2
             className="movie-card__title"
+            onClick={[Function]}
           >
             Some like In VAZ
           </h2>

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Main({specialFilm}) {
+function Main({specialMovie, onMovieCardTitleClick: handleMovieCardTitleClick}) {
   return (
     <>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt={specialFilm.name}/>
+          <img src="img/bg-the-grand-budapest-hotel.jpg" alt={specialMovie.name}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -30,14 +30,14 @@ function Main({specialFilm}) {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt={specialFilm.name} width="218" height="327"/>
+              <img src="img/the-grand-budapest-hotel-poster.jpg" alt={specialMovie.name} width="218" height="327"/>
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{specialFilm.name}</h2>
+              <h2 className="movie-card__title" onClick={handleMovieCardTitleClick}>{specialMovie.name}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{specialFilm.genre}</span>
-                <span className="movie-card__year">{specialFilm.releaseDate}</span>
+                <span className="movie-card__genre">{specialMovie.genre}</span>
+                <span className="movie-card__year">{specialMovie.releaseDate}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -307,11 +307,12 @@ function Main({specialFilm}) {
 }
 
 Main.propTypes = {
-  specialFilm: PropTypes.shape({
+  specialMovie: PropTypes.shape({
     name: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     releaseDate: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  onMovieCardTitleClick: PropTypes.func.isRequired
 };
 
 export default Main;
