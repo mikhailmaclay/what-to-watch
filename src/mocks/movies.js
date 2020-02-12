@@ -1,9 +1,4 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-
-import App from './app';
-
-const movies = [
+export default [
   {
     id: 1,
     name: `The Grand Budapest Hotel`,
@@ -48,11 +43,3 @@ const movies = [
     poster: `img/we-need-to-talk-about-kevin.jpg`
   }
 ];
-
-it(`<App/> should be rendered`, () => {
-  const result = renderer.create(
-      <App movies={movies}/>
-  ).toJSON();
-
-  expect(result).toMatchSnapshot();
-});

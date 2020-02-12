@@ -541,7 +541,7 @@ main {
   .catalog__genres-link:hover::after {
     display: block; }
 
-.catalog__movies-list {
+.catalog__movie-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -551,16 +551,16 @@ main {
       -ms-flex-align: start;
           align-items: flex-start;
   margin-bottom: 60px; }
-  .catalog__movies-list:last-child {
+  .catalog__movie-list:last-child {
     margin-bottom: 0; }
 
-.catalog__movies-card {
+.catalog__movie-card {
   width: calc((100% - 30px) / 4);
   margin-right: 10px;
   margin-bottom: 55px; }
-  .catalog__movies-card:nth-child(4n) {
+  .catalog__movie-card:nth-child(4n) {
     margin-right: 0; }
-  .catalog__movies-card:nth-last-child(-n + 4) {
+  .catalog__movie-card:nth-last-child(-n + 4) {
     margin-bottom: 0; }
 
 .catalog__button {
