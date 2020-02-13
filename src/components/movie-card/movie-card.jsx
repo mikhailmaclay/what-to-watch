@@ -1,16 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function MovieCard({id, name, poster, onMovieCardMouseOver: handleMovieCardMouseOver}) {
+const FIRST_IMAGE = 0;
+
+function MovieCard({id, name, images, onMovieCardMouseOver: handleMovieCardMouseOver}) {
   const handleMouseOver = () => handleMovieCardMouseOver(id);
+  const handleClick = () => window.location.assign(`/${id}`);
 
   return (
-    <article className="small-movie-card catalog__movie-card" onMouseOver={handleMouseOver}>
+    <article className="small-movie-card catalog__movie-card" onMouseOver={handleMouseOver} onClick={handleClick}>
       <div className="small-movie-card__image">
-        <img src={poster} alt={name} width="280" height="175"/>
+        <img src={images[FIRST_IMAGE]} alt={name} width="280" height="175"/>
       </div>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">{name}</a>
+        <span className="small-movie-card__link">{name}</span>
       </h3>
     </article>
   );
@@ -19,7 +22,7 @@ function MovieCard({id, name, poster, onMovieCardMouseOver: handleMovieCardMouse
 MovieCard.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
+  images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   onMovieCardMouseOver: PropTypes.func.isRequired
 };
 

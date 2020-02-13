@@ -8,14 +8,14 @@ const movie = {
   name: `Fantastic Beasts: The Crimes of Grindelwald`,
   genre: `Fantasy`,
   releaseDate: `2018`,
-  poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`
+  images: [`img/fantastic-beasts-the-crimes-of-grindelwald.jpg`]
 };
 
 it(`<MovieCard/> should render correctly`, () => {
-  const {id, name, poster} = movie;
+  const {id, name, images} = movie;
 
   const result = renderer.create(
-      <MovieCard id={id} name={name} poster={poster} onMovieCardMouseOver={() => {}}/>
+      <MovieCard id={id} name={name} images={images} onMovieCardMouseOver={() => {}}/>
   ).toJSON();
 
   expect(result).toMatchSnapshot();

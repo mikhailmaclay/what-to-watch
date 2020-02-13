@@ -131,7 +131,7 @@ Main.propTypes = {
     background: PropTypes.string.isRequired
   }).isRequired,
   movies: PropTypes.array.isRequired,
-  onMovieCardTitleClick: PropTypes.func.isRequired
+  onMovieCardTitleClick: PropTypes.func,
 };
 
 export default Main;

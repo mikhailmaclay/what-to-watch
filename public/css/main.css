@@ -927,6 +927,10 @@ main {
   margin-left: auto;
   margin-right: auto; }
 
+.page-footer:only-child {
+  margin-top: 60px;
+}
+
 .player {
   position: fixed;
   z-index: 9999;
@@ -1284,7 +1288,8 @@ main {
   -webkit-transition: 0.2s -webkit-transform;
   transition: 0.2s -webkit-transform;
   transition: 0.2s transform;
-  transition: 0.2s transform, 0.2s -webkit-transform; }
+  transition: 0.2s transform, 0.2s -webkit-transform;
+  cursor: pointer; }
   .small-movie-card:hover {
     z-index: 3;
     -webkit-transform: scale(1.2);

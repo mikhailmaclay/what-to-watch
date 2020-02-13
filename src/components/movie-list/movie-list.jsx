@@ -37,9 +37,7 @@ class MovieList extends React.PureComponent {
 
 MovieList.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired
+    id: PropTypes.number.isRequired
   })).isRequired
 };
 

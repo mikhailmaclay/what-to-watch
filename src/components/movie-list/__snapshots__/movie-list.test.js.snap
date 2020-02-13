@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MovieList/> should render correctly 1`] = `
+<div
+  className="catalog__movie-list"
+>
+  <article
+    className="small-movie-card catalog__movie-card"
+    onClick={[Function]}
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="The Grand Budapest Hotel"
+        height="175"
+        src="/img/the-grand-budapest-hotel-poster.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <span
+        className="small-movie-card__link"
+      >
+        The Grand Budapest Hotel
+      </span>
+    </h3>
+  </article>
+</div>
+`;
