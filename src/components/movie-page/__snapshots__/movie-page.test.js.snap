@@ -28,8 +28,7 @@ Array [
           className="logo"
         >
           <a
-            className="logo__link"
-            href="/"
+            className="logo__link undefined"
           >
             <span
               className="logo__letter logo__letter--1"
@@ -57,7 +56,7 @@ Array [
             <img
               alt="User avatar"
               height="63"
-              src="img/avatar.jpg"
+              src="/img/avatar.jpg"
               width="63"
             />
           </div>
@@ -127,7 +126,8 @@ Array [
             </button>
             <a
               className="btn movie-card__button"
-              href="add-review.html"
+              href="/add-review"
+              onClick={[Function]}
             >
               Add review
             </a>
@@ -161,31 +161,34 @@ Array [
               className="movie-nav__list"
             >
               <li
-                className="movie-nav__item movie-nav__item--active"
+                className="movie-nav__item false"
               >
                 <a
                   className="movie-nav__link"
-                  href="#"
+                  href="/films/1"
+                  onClick={[Function]}
                 >
                   Overview
                 </a>
               </li>
               <li
-                className="movie-nav__item"
+                className="movie-nav__item false"
               >
                 <a
                   className="movie-nav__link"
-                  href="#"
+                  href="/films/1/details"
+                  onClick={[Function]}
                 >
                   Details
                 </a>
               </li>
               <li
-                className="movie-nav__item"
+                className="movie-nav__item false"
               >
                 <a
                   className="movie-nav__link"
-                  href="#"
+                  href="/films/1/reviews"
+                  onClick={[Function]}
                 >
                   Reviews
                 </a>
@@ -198,7 +201,7 @@ Array [
             <div
               className="movie-rating__score"
             >
-              7.4
+              8.0
             </div>
             <p
               className="movie-rating__meta"
@@ -257,7 +260,6 @@ Array [
       >
         <a
           className="logo__link logo__link--light"
-          href="/"
         >
           <span
             className="logo__letter logo__letter--1"

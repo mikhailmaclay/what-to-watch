@@ -1,35 +1,77 @@
+// Libraries
 import React from 'react';
-import PropTypes from 'prop-types';
-import {Redirect} from 'react-router-dom';
-
-import {movieRatingLevelMap} from '../../consts';
-import {getArithmeticMean, getLevelFromNumber, pluralize} from '../../utils';
-
+// PropTypes
+import propTypes from './movie-page.prop-types';
+// Constants and utils
+import {Config, PathName} from '../../consts';
+import {
+  getDirector,
+  getArithmeticMean,
+  getMovieById,
+  getSimilarMovies,
+  getActors,
+  getLevelFromNumber,
+  getReviewsByIds,
+  getRatings
+} from '../../utils';
+// Components
+import {Link, Route, Switch, Redirect} from 'react-router-dom';
 import MovieList from '../movie-list/movie-list';
+import Footer from '../footer/footer';
+import MoviePoster from '../movie-poster/movie-poster';
+import Header from '../header/header';
+import MovieDetails from '../movie-details/movie-details';
+import MovieReviews from '../movie-reviews/movie-reviews';
+import MovieOverview from '../movie-overview/movie-overview';
+// HOCs
+import withStateUpdateOnHover from '../../hocs/with-state-update-on-hover';
+// Data
+import reviews from '../../mocks/reviews';
 
-const SCORE_PRECISION = 2;
-const DEFAULT_SCORE = 0;
-const MAX_ACTORS_COUNT = 4;
-const MAX_SIMILAR_MOVIES_COUNT = 4;
-const RATING_WORD_FORMS = [`rating`, `ratings`, `ratings`];
+const ACTIVE_MENU_ITEM_CLASS_NAME = `movie-nav__item--active`;
+
+const MovieListWithStateUpdateOnHover = withStateUpdateOnHover(MovieList);
 
 function MoviePage({movies, match}) {
   const movieId = parseInt(match.params.id, 10);
 
-  const movie = movies.find(({id}) => id === movieId);
+  const movie = getMovieById(movies, movieId);
 
   if (!movie) {
-    return <Redirect to="/"/>;
+    return <Redirect to={PathName.ROOT}/>;
   }
 
-  const similarMovies = movies.filter(({id, genre}) => id !== movie.id && genre === movie.genre).slice(0, MAX_SIMILAR_MOVIES_COUNT);
+  const {name, genre, releaseDate, description, runTime, team, reviews: reviewsIds, poster, background} = movie;
+  const {pathname} = location;
 
-  const {name, genre, releaseDate, description, team, ratings, poster, background} = movie;
+  const basePathname = `${PathName.MOVIE_PAGE}${movieId}`;
+  const detailsPathname = `${basePathname}/details`;
+  const reviewsPathname = `${basePathname}/reviews`;
 
-  const arithmeticMeanScore = ratings ? getArithmeticMean(ratings, SCORE_PRECISION) : DEFAULT_SCORE;
+  const similarMovies = getSimilarMovies(movies, movieId, genre, Config.SIMILAR_MOVIES_COUNT);
 
-  const director = team.find((member) => member.role === `Director`).fullName;
-  const actors = team.filter((member) => member.role === `Actor`).map((member) => member.fullName);
+  const thisReviews = getReviewsByIds(reviews, reviewsIds);
+  const ratings = getRatings(thisReviews);
+  const score = getArithmeticMean(ratings, Config.MOVIE_SCORE_PRECISION);
+  const level = getLevelFromNumber(score, Config.MOVIE_LEVEL_MAP);
+  const director = getDirector(team);
+  const actors = getActors(team);
+
+  const renderNavigation = () => (
+    <nav className="movie-nav movie-card__nav">
+      <ul className="movie-nav__list">
+        <li className={`movie-nav__item ${pathname === basePathname && ACTIVE_MENU_ITEM_CLASS_NAME}`}>
+          <Link to={basePathname} className="movie-nav__link">Overview</Link>
+        </li>
+        <li className={`movie-nav__item ${pathname === detailsPathname && ACTIVE_MENU_ITEM_CLASS_NAME}`}>
+          <Link to={detailsPathname} className="movie-nav__link">Details</Link>
+        </li>
+        <li className={`movie-nav__item ${pathname === reviewsPathname && ACTIVE_MENU_ITEM_CLASS_NAME}`}>
+          <Link to={reviewsPathname} className="movie-nav__link">Reviews</Link>
+        </li>
+      </ul>
+    </nav>
+  );
 
   return (
     <>
@@ -38,25 +80,8 @@ function MoviePage({movies, match}) {
           <div className="movie-card__bg">
             <img src={background} alt={name}/>
           </div>
-
           <h1 className="visually-hidden">WTW</h1>
-
-          <header className="page-header movie-card__head">
-            <div className="logo">
-              <a href="/" className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </a>
-            </div>
-
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-              </div>
-            </div>
-          </header>
-
+          <Header/>
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
               <h2 className="movie-card__title">{name}</h2>
@@ -64,7 +89,6 @@ function MoviePage({movies, match}) {
                 <span className="movie-card__genre">{genre}</span>
                 <span className="movie-card__year">{releaseDate}</span>
               </p>
-
               <div className="movie-card__buttons">
                 <button className="btn btn--play movie-card__button" type="button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
@@ -78,90 +102,47 @@ function MoviePage({movies, match}) {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                <Link to={PathName.ADD_REVIEW} className="btn movie-card__button">Add review</Link>
               </div>
             </div>
           </div>
         </div>
-
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
-            <div className="movie-card__poster movie-card__poster--big">
-              <img src={poster} alt={name} width="218" height="327"/>
-            </div>
-
+            <MoviePoster className="movie-card__poster movie-card__poster--big" src={poster} alt={name}/>
             <div className="movie-card__desc">
-              <nav className="movie-nav movie-card__nav">
-                <ul className="movie-nav__list">
-                  <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">Overview</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Details</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Reviews</a>
-                  </li>
-                </ul>
-              </nav>
-              <div className="movie-rating">
-                <div className="movie-rating__score">{arithmeticMeanScore}</div>
-                <p className="movie-rating__meta">
-                  {ratings.length ? <span className="movie-rating__level">{getLevelFromNumber(arithmeticMeanScore, movieRatingLevelMap)}</span> : null}
-                  <span className="movie-rating__count">{ratings.length ? `${ratings.length} ${pluralize(ratings.length, RATING_WORD_FORMS)}` : `No ratings`}</span>
-                </p>
-              </div>
-              <div className="movie-card__text">
-                {description.map((sentence, index) => <p key={`${sentence.length}-${index}`}>{sentence}</p>)}
-
-                <p className="movie-card__director"><b>Director: {director}</b></p>
-
-                <p className="movie-card__starring"><b>Starring: {actors.slice(0, MAX_ACTORS_COUNT).join(`, `)}{actors.length > MAX_ACTORS_COUNT && ` and other`}</b></p>
-              </div>
+              {renderNavigation()}
+              <Switch>
+                <Route path={basePathname} exact>
+                  <MovieOverview actors={actors} score={score} level={level} ratingsCount={ratings.length} director={director} description={description}/>
+                </Route>
+                <Route path={detailsPathname} exact>
+                  <MovieDetails releaseDate={releaseDate} genre={genre} actors={actors} runTime={runTime} director={director}/>
+                </Route>
+                <Route path={reviewsPathname} exact>
+                  <MovieReviews reviews={thisReviews}/>
+                </Route>
+                <Route>
+                  <Redirect to={basePathname}/>
+                </Route>
+              </Switch>
             </div>
           </div>
         </div>
       </section>
       <div className="page-content">
-        {similarMovies.length ? (
+        {!!similarMovies.length &&
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
-            <MovieList movies={similarMovies}/>
+            <MovieListWithStateUpdateOnHover movies={similarMovies}/>
           </section>
-        ) : null}
-        <footer className="page-footer">
-          <div className="logo">
-            <a href="/" className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        }
+        <Footer/>
       </div>
     </>
   );
 }
 
-MoviePage.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    releaseDate: PropTypes.string.isRequired,
-    description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    team: PropTypes.arrayOf(PropTypes.shape({
-      fullName: PropTypes.string.isRequired,
-      role: PropTypes.string.isRequired
-    })).isRequired,
-    ratings: PropTypes.arrayOf(PropTypes.number).isRequired,
-    poster: PropTypes.string.isRequired,
-    background: PropTypes.string.isRequired,
-  })).isRequired,
-  match: PropTypes.object.isRequired
-};
+MoviePage.propTypes = propTypes;
 
 export default MoviePage;

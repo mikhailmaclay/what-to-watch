@@ -1,6 +1,7 @@
+// Libraries
 import React from 'react';
 import renderer from 'react-test-renderer';
-
+// Components
 import App from './app';
 
 const movies = [

@@ -607,7 +607,8 @@ main {
   font-weight: bold;
   text-decoration: none;
   -webkit-transition: color 0.2s, border-color 0.2s;
-  transition: color 0.2s, border-color 0.2s; }
+  transition: color 0.2s, border-color 0.2s;
+  user-select: none; }
   .logo__link[href]:hover, .logo__link[href]:focus {
     border-color: rgba(84, 80, 62, 0.36);
     color: #54503E; }
@@ -1333,7 +1334,7 @@ main {
   display: inline-block;
   vertical-align: top;
   text-decoration: none;
-  color: inherit; }
+  color: #C9B37E; }
 
 .user-block {
   margin-left: auto; }

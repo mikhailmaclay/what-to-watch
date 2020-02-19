@@ -4,8 +4,9 @@ exports[`<MovieList/> should render correctly 1`] = `
 <div
   className="catalog__movie-list"
 >
-  <article
+  <a
     className="small-movie-card catalog__movie-card"
+    href="/films/1"
     onClick={[Function]}
     onMouseOver={[Function]}
   >
@@ -28,6 +29,6 @@ exports[`<MovieList/> should render correctly 1`] = `
         The Grand Budapest Hotel
       </span>
     </h3>
-  </article>
+  </a>
 </div>
 `;

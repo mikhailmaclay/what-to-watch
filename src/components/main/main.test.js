@@ -1,6 +1,8 @@
+// Libraries
 import React from 'react';
 import renderer from 'react-test-renderer';
-
+// Components
+import {BrowserRouter} from 'react-router-dom';
 import Main from './main';
 
 const specialMovie = {
@@ -12,11 +14,15 @@ const specialMovie = {
   background: `img/bg-the-grand-budapest-hotel.jpg`
 };
 
-const onMovieCardTitleClick = () => {};
+const genres = [{name: `Comedy`, url: `comedy`}];
+
+const handleMovieCardTitleClick = () => {};
 
 it(`<Main/> should render correctly`, () => {
   const result = renderer.create(
-      <Main specialMovie={specialMovie} movies={[]} onMovieCardTitleClick={onMovieCardTitleClick}/>
+      <BrowserRouter>
+        <Main specialMovie={specialMovie} movies={[]} genres={genres} onMovieCardTitleClick={handleMovieCardTitleClick}/>
+      </BrowserRouter>
   ).toJSON();
 
   expect(result).toMatchSnapshot();
