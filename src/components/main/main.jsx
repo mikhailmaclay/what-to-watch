@@ -8,10 +8,6 @@ import Footer from '../footer/footer';
 import Button from '../button/button';
 import GenreList from '../genre-list/genre-list';
 import MoviePromo from '../movie-promo/movie-promo';
-// HOCs
-import withStateUpdateOnHover from '../../hocs/with-state-update-on-hover';
-
-const MovieListWithStateUpdateOnHover = withStateUpdateOnHover(MovieList);
 
 function Main({specialMovie, genres, movies, onMovieCardTitleClick}) {
   return (
@@ -23,7 +19,7 @@ function Main({specialMovie, genres, movies, onMovieCardTitleClick}) {
           <GenreList genres={genres}/>
           {movies.length ?
             <>
-              <MovieListWithStateUpdateOnHover movies={movies}/>
+              <MovieList movies={movies}/>
               <div className="catalog__more">
                 <Button className="catalog__button">Show more</Button>
               </div>

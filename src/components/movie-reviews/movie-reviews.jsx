@@ -34,7 +34,7 @@ function MovieReviews({reviews}) {
 
 MovieReviews.propTypes = propTypes;
 
-MovieReviews.defaultPropTypes = {
+MovieReviews.defaultProps = {
   reviews: []
 };
 

@@ -1,8 +1,3 @@
-const PREVIEW_URL = `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`;
-const POSTER_URL = `https://via.placeholder.com/218x327`;
-const IMAGE_URL = `https://via.placeholder.com/280x175`;
-const BACKGROUND_URL = `https://via.placeholder.com/1300x552`;
-
 export default [
   {
     id: 1,
@@ -13,7 +8,7 @@ export default [
       `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
       `Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`
     ],
-    runTime: 125,
+    runTime: 100,
     team: [
       {fullName: `Wes Anderson`, role: `Director`},
       {fullName: `Bill Murray`, role: `Actor`},
@@ -22,11 +17,9 @@ export default [
       {fullName: `Willem Dafoe`, role: `Actor`},
       {fullName: `Adrien Brody`, role: `Actor`}
     ],
-    ratings: [],
     reviews: [1, 2, 3, 4, 5],
-    preview: PREVIEW_URL,
     poster: `/img/the-grand-budapest-hotel-poster.jpg`,
-    images: [IMAGE_URL],
+    images: [`/img/the-grand-budapest-hotel.jpg`],
     background: `/img/bg-the-grand-budapest-hotel.jpg`,
   },
   {
@@ -37,7 +30,7 @@ export default [
     description: [
       `The second installment of the "Fantastic Beasts" series featuring the adventures of Magizoologist Newt Scamander.`
     ],
-    runTime: 120,
+    runTime: 133,
     team: [
       {fullName: `David Yates`, role: `Director`},
       {fullName: `Eddie Redmayne`, role: `Actor`},
@@ -46,11 +39,10 @@ export default [
       {fullName: `Johnny Depp`, role: `Actor`},
       {fullName: `Carmen Ejogo`, role: `Actor`}
     ],
-    reviews: [2],
-    preview: PREVIEW_URL,
-    poster: POSTER_URL,
+    reviews: [6],
+    poster: `/img/fantastic-beasts-the-crimes-of-grindelwald-poster.jpg`,
     images: [`/img/fantastic-beasts-the-crimes-of-grindelwald.jpg`],
-    background: BACKGROUND_URL
+    background: `/img/fantastic-beasts-the-crimes-of-grindelwald-bg.jpg`
   },
   {
     id: 3,
@@ -60,7 +52,7 @@ export default [
     description: [
       `The story of the legendary British rock band Queen and lead singer Freddie Mercury, leading up to their famous performance at Live Aid (1985).`
     ],
-    runTime: 120,
+    runTime: 134,
     team: [
       {fullName: `Bryan Singer`, role: `Director`},
       {fullName: `Rami Malek`, role: `Actor`},
@@ -68,10 +60,9 @@ export default [
       {fullName: `Gwilym Lee`, role: `Actor`}
     ],
     reviews: [],
-    preview: PREVIEW_URL,
-    poster: POSTER_URL,
+    poster: `/img/bohemian-rhapsody-poster.jpg`,
     images: [`/img/bohemian-rhapsody.jpg`],
-    background: BACKGROUND_URL
+    background: `/img/bohemian-rhapsody-bg.jpg`
   },
   {
     id: 4,
@@ -81,7 +72,7 @@ export default [
     description: [
       `Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will become King of Scotland. Consumed by ambition and spurred to action by his wife, Macbeth murders his king and takes the throne for himself.`
     ],
-    runTime: 120,
+    runTime: 113,
     team: [
       {fullName: `Justin Kurzel`, role: `Director`},
       {fullName: `Michael Fassbender`, role: `Actor`},
@@ -89,10 +80,9 @@ export default [
       {fullName: `Jack Madigan`, role: `Actor`}
     ],
     reviews: [],
-    preview: PREVIEW_URL,
-    poster: POSTER_URL,
+    poster: `/img/macbeth-poster.jpg`,
     images: [`/img/macbeth.jpg`],
-    background: BACKGROUND_URL
+    background: `/img/macbeth-bg.jpg`
   },
   {
     id: 5,
@@ -102,7 +92,7 @@ export default [
     description: [
       `A biopic depicting the early years of legendary Director and aviator Howard Hughes' career from the late 1920s to the mid 1940s.`
     ],
-    runTime: 140,
+    runTime: 169,
     team: [
       {fullName: `Justin Kurzel`, role: `Director`},
       {fullName: ` Leonardo DiCaprio`, role: `Actor`},
@@ -110,10 +100,9 @@ export default [
       {fullName: `Kate Beckinsale`, role: `Actor`}
     ],
     reviews: [],
-    preview: PREVIEW_URL,
-    poster: POSTER_URL,
+    poster: `/img/aviator-poster.jpg`,
     images: [`/img/aviator.jpg`],
-    background: BACKGROUND_URL
+    background: `/img/aviator-bg.jpg`
   },
   {
     id: 6,
@@ -123,7 +112,7 @@ export default [
     description: [
       `Kevin's mother struggles to love her strange child, despite the increasingly dangerous things he says and does as he grows up. But Kevin is just getting started, and his final act will be beyond anything anyone imagined.`
     ],
-    runTime: 150,
+    runTime: 112,
     team: [
       {fullName: `Lynne Ramsay`, role: `Director`},
       {fullName: `Tilda Swinton`, role: `Actor`},
@@ -131,10 +120,9 @@ export default [
       {fullName: `Ezra Miller`, role: `Actor`}
     ],
     reviews: [],
-    preview: PREVIEW_URL,
-    poster: POSTER_URL,
+    poster: `/img/we-need-to-talk-about-kevin-poster.jpg`,
     images: [`/img/we-need-to-talk-about-kevin.jpg`],
-    background: BACKGROUND_URL
+    background: `/img/we-need-to-talk-about-kevin-bg.jpg`
   },
   {
     id: 7,
@@ -144,7 +132,7 @@ export default [
     description: [
       `A look into the daily (or rather, nightly) lives of three vampires, who've lived together for over 100 years, on Staten Island.`
     ],
-    runTime: 120,
+    runTime: 85,
     team: [
       {fullName: `Jemaine Clement`, role: `Director`},
       {fullName: `Kayvan Novak`, role: `Actor`},
@@ -152,10 +140,9 @@ export default [
       {fullName: `Natasia Demetriou`, role: `Actor`}
     ],
     reviews: [],
-    preview: PREVIEW_URL,
-    poster: POSTER_URL,
+    poster: `/img/what-we-do-in-the-shadows-poster.jpg`,
     images: [`/img/what-we-do-in-the-shadows.jpg`],
-    background: BACKGROUND_URL
+    background: `/img/what-we-do-in-the-shadows-bg.jpg`
   },
   {
     id: 8,
@@ -165,7 +152,7 @@ export default [
     description: [
       `A frontiersman on a fur trading expedition in the 1820s fights for survival after being mauled by a bear and left for dead by members of his own hunting team.`
     ],
-    runTime: 110,
+    runTime: 156,
     team: [
       {fullName: `Alejandro G. Iñárritu`, role: `Director`},
       {fullName: `Leonardo DiCaprio`, role: `Actor`},
@@ -173,30 +160,28 @@ export default [
       {fullName: `Will Poulter`, role: `Actor`}
     ],
     reviews: [],
-    preview: PREVIEW_URL,
-    poster: POSTER_URL,
+    poster: `/img/revenant-poster.jpg`,
     images: [`/img/revenant.jpg`],
-    background: BACKGROUND_URL
+    background: `/img/revenant-bg.jpg`
   },
   {
     id: 9,
-    name: `Johnny English`,
-    genre: `Action`,
-    releaseDate: `April 11, 2003`,
+    name: `Sintel`,
+    genre: `Fantasy`,
+    releaseDate: `September 27, 2010`,
     description: [
-      `After a sudden attack on MI5, Johnny English, Britain's most confident, yet unintelligent spy, becomes Britain's only spy.`
+      `The film follows a girl named Sintel who is searching for a baby dragon she calls Scales. A flashback reveals that Sintel found Scales with its wing injured and helped care for it, forming a close bond with it. By the time its wing recovered and it was able to fly, Scales was caught by an adult dragon. Sintel has since embarked on a quest to rescue Scales, fending off beasts and warriors along the way. She eventually comes across a cave housing an adult and baby dragon, the latter of which she believes to be Scales. The adult dragon discovers and attacks Sintel, but hesitates to kill her. Sintel slays the dragon, only to recognize the scar on its wing and realize the dragon is an adult Scales, and that she too has aged considerably. Sintel leaves the cave heartbroken, unknowingly followed by Scales's baby.`
     ],
-    runTime: 100,
+    runTime: 14,
     team: [
-      {fullName: `Peter Howitt`, role: `Director`},
-      {fullName: `Rowan Atkinson`, role: `Actor`},
-      {fullName: `John Malkovich`, role: `Actor`},
-      {fullName: `Natalie Imbruglia`, role: `Actor`}
+      {fullName: `Colin Levy`, role: `Director`},
+      {fullName: `Halina Reijn`, role: `Actor`},
+      {fullName: `Thom Hoffman`, role: `Actor`}
     ],
     reviews: [],
-    preview: PREVIEW_URL,
-    poster: POSTER_URL,
-    images: [`/img/johnny-english.jpg`],
-    background: BACKGROUND_URL
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    poster: `/img/sintel-poster.jpg`,
+    images: [`/img/sintel.jpg`],
+    background: `/img/sintel-bg.jpg`
   }
 ];

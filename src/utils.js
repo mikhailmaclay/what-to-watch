@@ -23,6 +23,18 @@ export const getLabeledDisplayName = (label, component) => {
   return `${label}(${getDisplayName(component)})`;
 };
 
+export const excludeProps = (props = {}, propNames = []) => {
+  const temp = {};
+
+  Object.keys(props).forEach((propName) => {
+    if (!propNames.includes(propName)) {
+      temp[propName] = props[propName];
+    }
+  });
+
+  return temp;
+};
+
 // Working with numbers
 export const getArithmeticMean = (numbers = [], precision = 1) => {
   const numbersSumm = numbers.reduce((summ, number) => summ + number, 0);
@@ -82,7 +94,7 @@ export const getDuration = (duration) => {
 //  Getting by id/ids
 export const getUserById = (users, id) => users.find((user) => user.id === id);
 export const getMovieById = (movies, id) => movies.find((movie) => movie.id === id);
-export const getReviewsByIds = (reviews, ids) => reviews.filter(({movie}) => ids.includes(movie));
+export const getReviewsByIds = (reviews, ids) => reviews.filter(({id}) => ids.includes(id));
 
 // Extracting specific items
 export const getGenres = (movies) => {

@@ -9,9 +9,11 @@ export const Config = {
     3: `Normal`,
     0: `Bad`
   },
+  MOVIE_PREVIEW_DELAY_MS: 1000,
   MOVIE_DEFAULT_SCORE: 0,
   MOVIE_OVERVIEW_ACTORS_COUNT: 4,
-  SIMILAR_MOVIES_COUNT: 4
+  SIMILAR_MOVIES_COUNT: 4,
+  VIDEO_PLAYER_DEFAULT_VOLUME: 1
 };
 
 export const PathName = {

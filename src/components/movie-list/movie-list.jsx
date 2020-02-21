@@ -4,10 +4,14 @@ import React from 'react';
 import propTypes from './movie-list.prop-types';
 // Components
 import MovieCard from '../movie-card/movie-card';
+// HOCs
+import withPreviewOnHover from '../../hocs/with-preview-on-hover';
 
-function MovieList({movies, onMouseOver}) {
+const MovieCardWithPreviewOnHover = withPreviewOnHover(MovieCard);
+
+function MovieList({movies}) {
   const renderMovieCards = () => (
-    movies.map((movie) => <MovieCard key={movie.id} {...movie} onMovieCardMouseOver={onMouseOver}/>)
+    movies.map((movie) => <MovieCardWithPreviewOnHover key={movie.id} {...movie}/>)
   );
 
   return (

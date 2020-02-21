@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<MovieCard/> should render correctly 1`] = `
-<a
+<article
   className="small-movie-card catalog__movie-card"
-  href="/films/1"
   onClick={[Function]}
-  onMouseOver={[Function]}
 >
-  <div
+  <a
     className="small-movie-card__image"
+    href="/films/1"
+    onClick={[Function]}
   >
     <img
       alt="Fantastic Beasts: The Crimes of Grindelwald"
@@ -16,7 +16,7 @@ exports[`<MovieCard/> should render correctly 1`] = `
       src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
       width="280"
     />
-  </div>
+  </a>
   <h3
     className="small-movie-card__title"
   >
@@ -26,5 +26,5 @@ exports[`<MovieCard/> should render correctly 1`] = `
       Fantastic Beasts: The Crimes of Grindelwald
     </span>
   </h3>
-</a>
+</article>
 `;

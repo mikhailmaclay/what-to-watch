@@ -1,7 +1,6 @@
 export default [
   {
     id: 1,
-    movie: 1,
     user: 1,
     date: `December 03, 2015 00:00:01`,
     rating: 10,
@@ -9,7 +8,6 @@ export default [
   },
   {
     id: 2,
-    movie: 1,
     user: 2,
     date: `June 18, 2019 20:00:09`,
     rating: 9,
@@ -17,7 +15,6 @@ export default [
   },
   {
     id: 3,
-    movie: 1,
     user: 3,
     date: `May 01, 2019, 2020 18:21:18`,
     rating: 9,
@@ -25,7 +22,6 @@ export default [
   },
   {
     id: 4,
-    movie: 1,
     user: 4,
     date: `November 10, 2019 20:20:01`,
     rating: 4,
@@ -33,7 +29,6 @@ export default [
   },
   {
     id: 5,
-    movie: 1,
     user: 5,
     date: `November 18, 2020 01:01:54`,
     rating: 8,
@@ -41,7 +36,6 @@ export default [
   },
   {
     id: 6,
-    movie: 2,
     user: 5,
     date: `January 24, 2020 03:24:00`,
     rating: 10,

@@ -23,14 +23,10 @@ import Header from '../header/header';
 import MovieDetails from '../movie-details/movie-details';
 import MovieReviews from '../movie-reviews/movie-reviews';
 import MovieOverview from '../movie-overview/movie-overview';
-// HOCs
-import withStateUpdateOnHover from '../../hocs/with-state-update-on-hover';
 // Data
 import reviews from '../../mocks/reviews';
 
 const ACTIVE_MENU_ITEM_CLASS_NAME = `movie-nav__item--active`;
-
-const MovieListWithStateUpdateOnHover = withStateUpdateOnHover(MovieList);
 
 function MoviePage({movies, match}) {
   const movieId = parseInt(match.params.id, 10);
@@ -134,7 +130,7 @@ function MoviePage({movies, match}) {
         {!!similarMovies.length &&
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
-            <MovieListWithStateUpdateOnHover movies={similarMovies}/>
+            <MovieList movies={similarMovies}/>
           </section>
         }
         <Footer/>

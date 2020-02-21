@@ -1289,8 +1289,7 @@ main {
   -webkit-transition: 0.2s -webkit-transform;
   transition: 0.2s -webkit-transform;
   transition: 0.2s transform;
-  transition: 0.2s transform, 0.2s -webkit-transform;
-  cursor: pointer; }
+  transition: 0.2s transform, 0.2s -webkit-transform; }
   .small-movie-card:hover {
     z-index: 3;
     -webkit-transform: scale(1.2);
@@ -1306,6 +1305,7 @@ main {
 .small-movie-card__image {
   position: relative;
   z-index: 1;
+  display: block;
   height: 175px; }
   .small-movie-card__image::after {
     content: '';
@@ -1328,7 +1328,9 @@ main {
   margin: 0;
   font-size: 17px;
   line-height: 20px;
-  font-weight: 500; }
+  font-weight: 500;
+  pointer-events: none;
+  user-select: none; }
 
 .small-movie-card__link {
   display: inline-block;

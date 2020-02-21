@@ -4,8 +4,6 @@ import renderer from 'react-test-renderer';
 // Components
 import {BrowserRouter} from 'react-router-dom';
 import MovieList from './movie-list';
-// HOCs
-import withStateUpdateOnHover from '../../hocs/with-state-update-on-hover';
 
 const movies = [
   {
@@ -15,12 +13,10 @@ const movies = [
   }
 ];
 
-const MovieListWithStateUpdateOnHover = withStateUpdateOnHover(MovieList);
-
 it(`<MovieList/> should render correctly`, () => {
   const result = renderer.create(
       <BrowserRouter>
-        <MovieListWithStateUpdateOnHover movies={movies}/>
+        <MovieList movies={movies}/>
       </BrowserRouter>
   ).toJSON();
 
