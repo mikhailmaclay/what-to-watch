@@ -1,5 +1,6 @@
 // Libraries
 import React from 'react';
+import {Link, Route, Switch, Redirect} from 'react-router-dom';
 // PropTypes
 import propTypes from './movie-page.prop-types';
 // Constants and utils
@@ -15,20 +16,17 @@ import {
   getRatings
 } from '../../utils';
 // Components
-import {Link, Route, Switch, Redirect} from 'react-router-dom';
 import MovieList from '../movie-list/movie-list';
 import Footer from '../footer/footer';
 import MoviePoster from '../movie-poster/movie-poster';
 import Header from '../header/header';
 import MovieDetails from '../movie-details/movie-details';
-import MovieReviews from '../movie-reviews/movie-reviews';
 import MovieOverview from '../movie-overview/movie-overview';
-// Data
-import reviews from '../../mocks/reviews';
+import MovieReviews from '../movie-reviews/movie-reviews';
 
 const ACTIVE_MENU_ITEM_CLASS_NAME = `movie-nav__item--active`;
 
-function MoviePage({movies, match}) {
+function MoviePage({movies, reviews, users, match}) {
   const movieId = parseInt(match.params.id, 10);
 
   const movie = getMovieById(movies, movieId);
@@ -116,7 +114,7 @@ function MoviePage({movies, match}) {
                   <MovieDetails releaseDate={releaseDate} genre={genre} actors={actors} runTime={runTime} director={director}/>
                 </Route>
                 <Route path={reviewsPathname} exact>
-                  <MovieReviews reviews={thisReviews}/>
+                  <MovieReviews reviews={thisReviews} users={users}/>
                 </Route>
                 <Route>
                   <Redirect to={basePathname}/>

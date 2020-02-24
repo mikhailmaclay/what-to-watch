@@ -15,9 +15,13 @@ const reviews = [
   }
 ];
 
+const users = [
+  {id: 1, fullName: `Shia LaBeouf`}
+];
+
 it(`<MovieReviews/> should render correctly`, () => {
   const result = renderer.create(
-      <MovieReviews reviews={reviews}/>
+      <MovieReviews reviews={reviews} users={users}/>
   ).toJSON();
 
   expect(result).toMatchSnapshot();

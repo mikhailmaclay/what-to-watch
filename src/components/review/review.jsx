@@ -3,13 +3,9 @@ import React from 'react';
 // PropTypes
 import propTypes from './review.prop-types';
 // Constants and utils
-import {getUserById, formatScore, getDate} from '../../utils';
-// Data
-import users from '../../mocks/users';
+import {formatScore, getDate} from '../../utils';
 
-function Review({user, date, rating, text}) {
-  const {fullName: userName} = getUserById(users, user);
-
+function Review({userName, date, rating, text}) {
   return (
     <div className="review">
       <blockquote className="review__quote">

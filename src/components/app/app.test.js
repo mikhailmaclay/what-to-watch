@@ -15,9 +15,23 @@ const movies = [
   }
 ];
 
+const reviews = [
+  {
+    id: 1,
+    user: 1,
+    rating: 5,
+    date: `November 18, 2020 03:24:00`,
+    text: `DO! IT!`
+  }
+];
+
+const users = [
+  {id: 1, fullName: `Shia LaBeouf`}
+];
+
 it(`<App/> should be rendered`, () => {
   const result = renderer.create(
-      <App movies={movies}/>
+      <App movies={movies} reviews={reviews} users={users}/>
   ).toJSON();
 
   expect(result).toMatchSnapshot();

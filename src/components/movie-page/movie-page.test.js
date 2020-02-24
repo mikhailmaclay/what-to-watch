@@ -1,8 +1,8 @@
 // Libraries
 import React from 'react';
 import renderer from 'react-test-renderer';
-// Components
 import {BrowserRouter} from 'react-router-dom';
+// Components
 import MoviePage from './movie-page';
 
 const movies = [
@@ -29,6 +29,21 @@ const movies = [
     background: `/img/bg-the-grand-budapest-hotel.jpg`,
   }
 ];
+
+const reviews = [
+  {
+    id: 1,
+    user: 1,
+    rating: 5,
+    date: `November 18, 2020 03:24:00`,
+    text: `DO! IT!`
+  }
+];
+
+const users = [
+  {id: 1, fullName: `Shia LaBeouf`}
+];
+
 const match = {
   params: {
     id: 1
@@ -38,7 +53,7 @@ const match = {
 it(`<MoviePage/> should render correctly`, () => {
   const result = renderer.create(
       <BrowserRouter>
-        <MoviePage movies={movies} match={match}/>
+        <MoviePage movies={movies} reviews={reviews} users={users} match={match}/>
       </BrowserRouter>
   ).toJSON();
 

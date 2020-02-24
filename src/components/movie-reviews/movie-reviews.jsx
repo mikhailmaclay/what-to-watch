@@ -4,18 +4,20 @@ import React from 'react';
 import propTypes from './movie-reviews.prop-types';
 // Components
 import Review from '../review/review';
-import {splitArray} from '../../utils';
+import {getUserById, splitArray} from '../../utils';
 
 const FIRST_ITEM_INDEX = 0;
 
-function MovieReviews({reviews}) {
+function MovieReviews({reviews, users}) {
   const reviewsByColumns = splitArray(reviews);
 
   // eslint-disable-next-line no-shadow
   const renderReviews = (reviews) => (
-    reviews.map(({rating, user, date, text, id}) => (
-      <Review key={id} rating={rating} user={user} date={date} text={text}/>
-    ))
+    reviews.map(({rating, user, date, text, id}) => {
+      const {fullName: userName} = getUserById(users, user);
+
+      return <Review key={id} rating={rating} userName={userName} date={date} text={text}/>;
+    })
   );
 
   return (

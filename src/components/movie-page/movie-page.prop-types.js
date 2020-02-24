@@ -16,5 +16,13 @@ export default {
     poster: PropTypes.string.isRequired,
     background: PropTypes.string.isRequired,
   })).isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    user: PropTypes.number.isRequired,
+    date: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    text: PropTypes.string.isRequired
+  })).isRequired,
+  users: PropTypes.arrayOf(PropTypes.object).isRequired,
   match: PropTypes.object.isRequired
 };

@@ -24,7 +24,7 @@ exports[`<MovieReviews/> should render correctly 1`] = `
           <cite
             className="review__author"
           >
-            Kate Muir
+            Shia LaBeouf
           </cite>
           <time
             className="review__date"

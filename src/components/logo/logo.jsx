@@ -1,10 +1,10 @@
+// Libraries
 import React from 'react';
-
-import propTypes from './logo.prop-types';
-
-import {PathName} from '../../consts';
-
 import {Link} from 'react-router-dom';
+// PropTypes
+import propTypes from './logo.prop-types';
+// Constants and utils
+import {PathName} from '../../consts';
 
 function Logo({theme}) {
   const {pathname} = location;

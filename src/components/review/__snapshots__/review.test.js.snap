@@ -18,7 +18,7 @@ exports[`<Review/> should render correctly 1`] = `
       <cite
         className="review__author"
       >
-        Amanda Greever
+        Shia LaBeouf
       </cite>
       <time
         className="review__date"

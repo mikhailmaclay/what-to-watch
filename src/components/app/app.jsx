@@ -1,16 +1,16 @@
 // Libraries
 import React from 'react';
+import {Config, PathName} from '../../consts';
+import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 // PropTypes
 import propTypes from './app.prop-types';
 // Constants and utils
-import {Config, PathName} from '../../consts';
 import {filterByGenreSearch, getGenres, getMovieById} from '../../utils';
 // Components
-import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 import Main from '../main/main';
 import MoviePage from '../movie-page/movie-page';
 
-function App({movies}) {
+function App({movies, reviews, users}) {
   const specialMovie = getMovieById(movies, Config.SPECIAL_MOVIE_ID);
   const commonMovies = movies.filter(({id}) => id !== Config.SPECIAL_MOVIE_ID);
   const genres = getGenres(commonMovies);
@@ -30,7 +30,7 @@ function App({movies}) {
         </Route>
         <Route path={`${PathName.MOVIE_PAGE}:id`}>
           {({match}) => (
-            <MoviePage movies={movies} match={match}/>
+            <MoviePage movies={movies} reviews={reviews} users={users} match={match}/>
           )}
         </Route>
         <Route>

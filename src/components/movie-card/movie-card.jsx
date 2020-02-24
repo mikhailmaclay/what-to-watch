@@ -1,14 +1,12 @@
 // Libraries
 import React from 'react';
+import {Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 // PropTypes
 import propTypes from './movie-card.prop-types';
 // Constants and utils
 import {PathName} from '../../consts';
 import {getLabeledDisplayName} from '../../utils';
-// Components
-import {Link} from 'react-router-dom';
-// HOCs
-import {withRouter} from 'react-router-dom';
 
 const FIRST_IMAGE = 0;
 

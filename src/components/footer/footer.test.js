@@ -1,8 +1,8 @@
 // Libraries
 import React from 'react';
 import renderer from 'react-test-renderer';
-// Components
 import {BrowserRouter} from 'react-router-dom';
+// Components
 import Footer from './footer';
 
 it(`<Footer/> should render correctly`, () => {
