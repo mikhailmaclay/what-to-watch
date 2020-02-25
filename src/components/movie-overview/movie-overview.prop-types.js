@@ -5,6 +5,6 @@ export default {
   ratingsCount: PropTypes.number.isRequired,
   level: PropTypes.string.isRequired,
   description: PropTypes.arrayOf(PropTypes.string).isRequired,
-  director: PropTypes.string.isRequired,
-  actors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+  directors: PropTypes.arrayOf(PropTypes.string).isRequired,
+  actors: PropTypes.arrayOf(PropTypes.string).isRequired
 };

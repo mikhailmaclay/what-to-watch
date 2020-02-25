@@ -6,8 +6,6 @@ import Adapter from 'enzyme-adapter-react-16';
 import {BrowserRouter} from 'react-router-dom';
 import VideoPlayer from './video-player';
 import MovieCard from '../movie-card/movie-card';
-// HOCs
-import withPreviewOnHover from '../../hocs/with-preview-on-hover';
 
 const movie = {
   id: 9,
@@ -30,14 +28,12 @@ const movie = {
   background: `/img/bg-sintel.jpg`
 };
 
-const MovieCardWithPreviewOnHover = withPreviewOnHover(MovieCard);
-
 configure({adapter: new Adapter()});
 
 it(`<VideoPlayer/> as a preview should be rendered and change isPlaying state to true on mouseenter event`, () => {
   const wrapper = mount(
       <BrowserRouter>
-        <MovieCardWithPreviewOnHover {...movie}/>
+        <MovieCard {...movie}/>
       </BrowserRouter>
   );
 
@@ -45,7 +41,7 @@ it(`<VideoPlayer/> as a preview should be rendered and change isPlaying state to
 
   jest.useFakeTimers();
 
-  wrapper.find(MovieCardWithPreviewOnHover).simulate(`mouseenter`);
+  wrapper.find(MovieCard).simulate(`mouseenter`);
 
   jest.advanceTimersByTime(1000);
 

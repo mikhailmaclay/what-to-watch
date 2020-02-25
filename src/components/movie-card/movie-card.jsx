@@ -7,6 +7,8 @@ import propTypes from './movie-card.prop-types';
 // Constants and utils
 import {PathName} from '../../consts';
 import {getLabeledDisplayName} from '../../utils';
+// HOCs
+import withPreviewOnHover from '../../hocs/with-preview-on-hover';
 
 const FIRST_IMAGE = 0;
 
@@ -34,4 +36,7 @@ const MovieCardWithRouter = withRouter(MovieCard);
 
 MovieCardWithRouter.displayName = getLabeledDisplayName(`WithRouter`, MovieCard);
 
-export default MovieCardWithRouter;
+const MovieCardWithPreviewOnHover = withPreviewOnHover(MovieCardWithRouter);
+
+export default MovieCardWithPreviewOnHover;
+export {MovieCard};

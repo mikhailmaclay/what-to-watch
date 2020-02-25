@@ -8,9 +8,9 @@ import {bind, excludeProps, getLabeledDisplayName} from '../../utils';
 // Components
 import Button from '../button/button';
 // HOCs
-import withStateUpdate from '../../hocs/with-state-update';
+import withState from '../../hocs/with-state';
 
-const PROPS_TO_EXCLUDE = [`updateState`, `isPreview`, `isPlaying`, `isPaused`, `isLooped`, `isMuted`];
+const PROPS_TO_EXCLUDE = [`setState`, `isPreview`, `isPlaying`, `isPaused`, `isLooped`, `isMuted`];
 
 class VideoPlayer extends React.Component {
   constructor(props) {
@@ -27,30 +27,30 @@ class VideoPlayer extends React.Component {
   }
 
   play() {
-    const {updateState} = this.props;
+    const {setState} = this.props;
 
-    updateState({isPlaying: true, isPaused: false});
+    setState({isPlaying: true, isPaused: false});
   }
 
   pause() {
-    const {updateState} = this.props;
+    const {setState} = this.props;
 
-    updateState({isPlaying: false, isPaused: true});
+    setState({isPlaying: false, isPaused: true});
   }
 
   toggleVolume() {
-    const {isMuted, updateState} = this.props;
+    const {isMuted, setState} = this.props;
 
-    updateState({isMuted: !isMuted});
+    setState({isMuted: !isMuted});
   }
 
   setVolume(volume) {
-    const {updateState} = this.props;
+    const {setState} = this.props;
 
     if (volume === 0) {
-      updateState({isMuted: true, volume});
+      setState({isMuted: true, volume});
     } else {
-      updateState({isMuted: false, volume});
+      setState({isMuted: false, volume});
     }
   }
 
@@ -107,6 +107,7 @@ VideoPlayer.defaultProps = {
   isMuted: false
 };
 
-const VideoPlayerWithStateUpdate = withStateUpdate(VideoPlayer);
+const VideoPlayerStateUpdate = withState(VideoPlayer);
 
-export default VideoPlayerWithStateUpdate;
+export default VideoPlayerStateUpdate;
+export {VideoPlayer};

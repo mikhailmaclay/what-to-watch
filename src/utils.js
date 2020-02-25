@@ -105,8 +105,7 @@ export const getGenres = (movies) => {
   }, []);
 };
 export const getRatings = (reviews) => reviews.map(({rating}) => rating);
-export const getDirector = (team) => getFilter(FilterName.Team.ROLE, `Director`)(team).map((member) => member.fullName).join(``);
-export const getActors = (team) => getFilter(FilterName.Team.ROLE, `Actor`)(team).map((member) => member.fullName);
+export const getTeamMembersByRole = (team, role) => getFilter(FilterName.Team.ROLE, role)(team).map((member) => member.fullName);
 
 // Filtering
 export const getFilter = (filterName, query) => {

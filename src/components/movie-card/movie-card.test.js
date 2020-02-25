@@ -3,7 +3,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {BrowserRouter} from 'react-router-dom';
 // Components
-import MovieCard from './movie-card';
+import {MovieCard} from './movie-card';
 
 const movie = {
   id: 1,

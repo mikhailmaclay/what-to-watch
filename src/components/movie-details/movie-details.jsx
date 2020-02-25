@@ -3,15 +3,23 @@ import React from 'react';
 // PropTypes
 import propTypes from './movie-details.prop-types';
 // Constants and utils
-import {getYear, getDuration} from '../../utils';
+import {getYear, getDuration, pluralize} from '../../utils';
 
-function MovieDetails({director, actors, runTime, genre, releaseDate}) {
+const DIRECTOR_WORD_FORMS = [`Director`, `Directors`, `Directors`];
+
+function MovieDetails({directors, actors, runTime, genre, releaseDate}) {
   return (
     <div className="movie-card__text movie-card__row">
       <div className="movie-card__text-col">
         <p className="movie-card__details-item">
-          <strong className="movie-card__details-name">Director</strong>
-          <span className="movie-card__details-value">{director}</span>
+          <strong className="movie-card__details-name">{pluralize(directors.length, DIRECTOR_WORD_FORMS)}</strong>
+          <span className="movie-card__details-value">
+            {directors.map((director, index) => (
+              <React.Fragment key={`${director}-${index}`}>
+                {director}<br/>
+              </React.Fragment>
+            ))}
+          </span>
         </p>
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Starring</strong>

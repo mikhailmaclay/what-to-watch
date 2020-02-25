@@ -3,7 +3,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {BrowserRouter} from 'react-router-dom';
 // Components
-import MovieList from './movie-list';
+import {MovieList} from './movie-list';
 
 const movies = [
   {
@@ -12,11 +12,13 @@ const movies = [
     images: [`/img/the-grand-budapest-hotel-poster.jpg`]
   }
 ];
+const count = 10;
+const incrementCounter = () => {};
 
 it(`<MovieList/> should render correctly`, () => {
   const result = renderer.create(
       <BrowserRouter>
-        <MovieList movies={movies}/>
+        <MovieList movies={movies} count={count} incrementCounter={incrementCounter}/>
       </BrowserRouter>
   ).toJSON();
 

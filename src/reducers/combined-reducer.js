@@ -1,10 +1,10 @@
-// Libraries
-import {combineReducers} from 'redux';
-// Reducers
-import movies from './movies';
-import reviews from './reviews';
-import users from './users';
+const combinedReducer = (state = {}, action) => {
+  const {type: actionType} = action;
 
-const combinedReducer = combineReducers({movies, reviews, users});
+  switch (actionType) {
+    default:
+      return state;
+  }
+};
 
 export default combinedReducer;

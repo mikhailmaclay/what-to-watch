@@ -231,7 +231,8 @@ Array [
               className="movie-card__director"
             >
               <b>
-                Director: 
+                Director
+                : 
                 Wes Anderson
               </b>
             </p>

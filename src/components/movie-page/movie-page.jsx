@@ -6,11 +6,10 @@ import propTypes from './movie-page.prop-types';
 // Constants and utils
 import {Config, PathName} from '../../consts';
 import {
-  getDirector,
   getArithmeticMean,
   getMovieById,
   getSimilarMovies,
-  getActors,
+  getTeamMembersByRole,
   getLevelFromNumber,
   getReviewsByIds,
   getRatings
@@ -48,8 +47,8 @@ function MoviePage({movies, reviews, users, match}) {
   const ratings = getRatings(thisReviews);
   const score = getArithmeticMean(ratings, Config.MOVIE_SCORE_PRECISION);
   const level = getLevelFromNumber(score, Config.MOVIE_LEVEL_MAP);
-  const director = getDirector(team);
-  const actors = getActors(team);
+  const directors = getTeamMembersByRole(team, `Director`);
+  const actors = getTeamMembersByRole(team, `Actor`);
 
   const renderNavigation = () => (
     <nav className="movie-nav movie-card__nav">
@@ -108,10 +107,10 @@ function MoviePage({movies, reviews, users, match}) {
               {renderNavigation()}
               <Switch>
                 <Route path={basePathname} exact>
-                  <MovieOverview actors={actors} score={score} level={level} ratingsCount={ratings.length} director={director} description={description}/>
+                  <MovieOverview actors={actors} score={score} level={level} ratingsCount={ratings.length} directors={directors} description={description}/>
                 </Route>
                 <Route path={detailsPathname} exact>
-                  <MovieDetails releaseDate={releaseDate} genre={genre} actors={actors} runTime={runTime} director={director}/>
+                  <MovieDetails releaseDate={releaseDate} genre={genre} actors={actors} runTime={runTime} directors={directors}/>
                 </Route>
                 <Route path={reviewsPathname} exact>
                   <MovieReviews reviews={thisReviews} users={users}/>

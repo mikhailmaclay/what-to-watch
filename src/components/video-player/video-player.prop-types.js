@@ -5,5 +5,6 @@ export default {
   isPlaying: PropTypes.bool,
   isPaused: PropTypes.bool,
   isLooped: PropTypes.bool,
-  isMuted: PropTypes.bool
+  isMuted: PropTypes.bool,
+  setState: PropTypes.func.isRequired
 };

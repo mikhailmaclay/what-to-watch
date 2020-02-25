@@ -19,6 +19,7 @@ exports[`<MovieDetails/> should render correctly 1`] = `
         className="movie-card__details-value"
       >
         Shia LaBeouf
+        <br />
       </span>
     </p>
     <p
