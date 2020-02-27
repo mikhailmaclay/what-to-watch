@@ -4,10 +4,21 @@ import renderer from 'react-test-renderer';
 // Components
 import {VideoPlayer} from './video-player';
 
-it(`<VideoPlayer/> should render correctly`, () => {
-  const result = renderer.create(
-      <VideoPlayer/>
-  );
+HTMLMediaElement.prototype.play = () => {};
 
-  expect(result).toMatchSnapshot();
+describe(`<VideoPlayer/>`, () => {
+  const props = {
+    setIsPlayingToTrue: () => {},
+    setIsPlayingToFalse: () => {},
+    setIsPausedToTrue: () => {},
+    setIsPausedToFalse: () => {},
+    toggleIsMuted: () => {},
+  };
+  it(`should render correctly`, () => {
+    const result = renderer.create(
+        <VideoPlayer {...props}/>
+    );
+
+    expect(result).toMatchSnapshot();
+  });
 });

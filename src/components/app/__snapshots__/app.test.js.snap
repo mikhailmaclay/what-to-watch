@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<App/> should be rendered 1`] = `
+exports[`<App/> should be rendered correctly 1`] = `
 Array [
   <section
     className="movie-card"
@@ -25,7 +25,7 @@ Array [
         className="logo"
       >
         <a
-          className="logo__link undefined"
+          className="logo__link "
         >
           <span
             className="logo__letter logo__letter--1"
@@ -80,9 +80,13 @@ Array [
         >
           <h2
             className="movie-card__title"
-            onClick={[Function]}
           >
-            The Grand Budapest Hotel
+            <a
+              href="/films/1"
+              onClick={[Function]}
+            >
+              The Grand Budapest Hotel
+            </a>
           </h2>
           <p
             className="movie-card__meta"
@@ -159,10 +163,19 @@ Array [
         >
           <a
             className="catalog__genres-link"
-            href="/"
-            onClick={[Function]}
           >
             All genres
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item false"
+        >
+          <a
+            className="catalog__genres-link"
+            href="/films?genre=drama"
+            onClick={[Function]}
+          >
+            Drama
           </a>
         </li>
       </ul>

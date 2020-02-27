@@ -2,7 +2,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 // Components
-import App from './app';
+import AppContainer from './app.container';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
 
 const movies = [
   {
@@ -10,6 +12,8 @@ const movies = [
     name: `The Grand Budapest Hotel`,
     genre: `Drama`,
     releaseDate: `2014`,
+    reviews: [1],
+    images: [`/img/the-grand-budapest-hotel.jpg`],
     poster: `/img/the-grand-budapest-hotel-poster.jpg`,
     background: `/img/bg-the-grand-budapest-hotel.jpg`
   }
@@ -29,10 +33,23 @@ const users = [
   {id: 1, fullName: `Shia LaBeouf`}
 ];
 
-it(`<App/> should be rendered`, () => {
-  const result = renderer.create(
-      <App movies={movies} reviews={reviews} users={users}/>
-  ).toJSON();
+const initialState = {
+  movies,
+  reviews,
+  users,
+  specialMovie: 1
+};
 
-  expect(result).toMatchSnapshot();
+const store = createStore((state) => state, initialState);
+
+describe(`<App/>`, () => {
+  it(`should be rendered correctly`, () => {
+    const result = renderer.create(
+        <Provider store={store}>
+          <AppContainer/>
+        </Provider>
+    ).toJSON();
+
+    expect(result).toMatchSnapshot();
+  });
 });

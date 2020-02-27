@@ -2,9 +2,13 @@ import PropTypes from 'prop-types';
 
 export default {
   src: PropTypes.string,
-  isPlaying: PropTypes.bool,
-  isPaused: PropTypes.bool,
   isLooped: PropTypes.bool,
-  isMuted: PropTypes.bool,
-  setState: PropTypes.func.isRequired
+  isPlaying: PropTypes.bool, // withFlag
+  setIsPlayingToTrue: PropTypes.func.isRequired, // withFlag
+  setIsPlayingToFalse: PropTypes.func.isRequired, // withFlag
+  isPaused: PropTypes.bool, // withFlag
+  setIsPausedToTrue: PropTypes.func.isRequired, // withFlag
+  setIsPausedToFalse: PropTypes.func.isRequired, // withFlag
+  isMuted: PropTypes.bool, // withFlag
+  toggleIsMuted: PropTypes.func.isRequired // withFlag
 };

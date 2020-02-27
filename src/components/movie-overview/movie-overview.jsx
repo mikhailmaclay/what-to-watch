@@ -9,16 +9,16 @@ import {pluralize, formatScore} from '../../utils';
 const RATING_WORD_FORMS = [`rating`, `ratings`, `ratings`];
 const DIRECTOR_WORD_FORMS = [`Director`, `Directors`, `Directors`];
 
-function MovieOverview({score, ratingsCount, level, description, directors, actors}) {
+function MovieOverview({score, reviewsCount, level, description, directors, actors}) {
   return (
     <>
       <div className="movie-rating">
         <div className="movie-rating__score">{formatScore(score)}</div>
         <p className="movie-rating__meta">
-          {!!ratingsCount &&
+          {!!reviewsCount &&
             <span className="movie-rating__level">{level}</span>
           }
-          <span className="movie-rating__count">{ratingsCount ? `${ratingsCount} ${pluralize(ratingsCount, RATING_WORD_FORMS)}` : `No ratings`}</span>
+          <span className="movie-rating__count">{reviewsCount ? `${reviewsCount} ${pluralize(reviewsCount, RATING_WORD_FORMS)}` : `No ratings`}</span>
         </p>
       </div>
       <div className="movie-card__text">
@@ -32,4 +32,4 @@ function MovieOverview({score, ratingsCount, level, description, directors, acto
 
 MovieOverview.propTypes = propTypes;
 
-export default MovieOverview;
+export default React.memo(MovieOverview);

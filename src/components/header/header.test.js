@@ -5,12 +5,14 @@ import {BrowserRouter} from 'react-router-dom';
 // Components
 import Header from './header';
 
-it(`<Header/> should render correctly`, () => {
-  const result = renderer.create(
-      <BrowserRouter>
-        <Header/>
-      </BrowserRouter>
-  ).toJSON();
+describe(`<Header/>`, () => {
+  it(`should render correctly`, () => {
+    const result = renderer.create(
+        <BrowserRouter>
+          <Header/>
+        </BrowserRouter>
+    ).toJSON();
 
-  expect(result).toMatchSnapshot();
+    expect(result).toMatchSnapshot();
+  });
 });

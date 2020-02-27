@@ -1,18 +1,21 @@
 // Libraries
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {BrowserRouter} from 'react-router-dom';
 // Components
-import GenreList from './genre-list';
+import {GenreList} from './genre-list';
 
 const genres = [{name: `Comedy`, url: `comedy`}];
 
-it(`<GenreList/> should render correctly`, () => {
-  const result = renderer.create(
-      <BrowserRouter>
-        <GenreList genres={genres}/>
-      </BrowserRouter>
-  ).toJSON();
+describe(`<GenreList/>`, () => {
+  const props = {
+    genres
+  };
 
-  expect(result).toMatchSnapshot();
+  it(`should render correctly`, () => {
+    const result = renderer.create(
+        <GenreList {...props}/>
+    ).toJSON();
+
+    expect(result).toMatchSnapshot();
+  });
 });

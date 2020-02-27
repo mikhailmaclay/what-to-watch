@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<MovieOverview/> should render correctly 1`] = `
+exports[`<MovieOverview/> should render correctly should render correctly 1`] = `
 Array [
   <div
     className="movie-rating"
@@ -16,7 +16,7 @@ Array [
       <span
         className="movie-rating__level"
       >
-        Very good
+        Awesome
       </span>
       <span
         className="movie-rating__count"

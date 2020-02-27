@@ -2,15 +2,40 @@
 import React from 'react';
 // PropTypes
 import propTypes from './video-player.prop-types';
+// Styles
+import styles from './video-player.styles';
 // Constants and utils
 import {Config} from '../../consts';
-import {bind, excludeProps, getLabeledDisplayName} from '../../utils';
+import {bind, compose, excludeProps, getLabeledDisplayName} from '../../utils';
 // Components
 import Button from '../button/button';
 // HOCs
-import withState from '../../hocs/with-state';
+import withFlag from '../../hocs/with-flag';
+import withPercentageCounter from '../../hocs/with-percentage-counter';
 
-const PROPS_TO_EXCLUDE = [`setState`, `isPreview`, `isPlaying`, `isPaused`, `isLooped`, `isMuted`];
+const PROPS_TO_EXCLUDE = [
+  `isPreview`,
+  `isLooped`,
+  `volume`, // withPercentageCounter
+  `incrementVolume`, // withPercentageCounter
+  `decrementVolume`, // withPercentageCounter
+  `setVolume`, // withPercentageCounter
+  `isPlaying`, // withFlag
+  `setIsPlaying`, // withFlag
+  `setIsPlayingToTrue`, // withFlag
+  `setIsPlayingToFalse`, // withFlag
+  `toggleIsPlaying`, // withFlag
+  `isPaused`, // withFlag
+  `setIsPaused`, // withFlag
+  `setIsPausedToTrue`, // withFlag
+  `setIsPausedToFalse`, // withFlag
+  `toggleIsPaused`, // withFlag
+  `isMuted`, // withFlag
+  `setIsMuted`, // withFlag
+  `setIsMutedToTrue`, // withFlag
+  `setIsMutedToFalse`, // withFlag
+  `toggleIsMuted` // withFlag
+];
 
 class VideoPlayer extends React.Component {
   constructor(props) {
@@ -27,35 +52,39 @@ class VideoPlayer extends React.Component {
   }
 
   play() {
-    const {setState} = this.props;
+    const {/* withFlag: */setIsPlayingToTrue, setIsPausedToFalse} = this.props;
 
-    setState({isPlaying: true, isPaused: false});
+    setIsPlayingToTrue();
+    setIsPausedToFalse();
   }
 
   pause() {
-    const {setState} = this.props;
+    const {/* withFlag: */setIsPlayingToFalse, setIsPausedToTrue} = this.props;
 
-    setState({isPlaying: false, isPaused: true});
+    setIsPlayingToFalse();
+    setIsPausedToTrue();
   }
 
   toggleVolume() {
-    const {isMuted, setState} = this.props;
+    const {/* withFlag: */toggleIsMuted} = this.props;
 
-    setState({isMuted: !isMuted});
+    toggleIsMuted();
   }
 
   setVolume(volume) {
-    const {setState} = this.props;
+    const {/* withFlag: */setIsMutedToTrue, setIsMutedToFalse, /* withPercentageCounter: */ setVolume} = this.props;
 
-    if (volume === 0) {
-      setState({isMuted: true, volume});
+    if (volume <= 0) {
+      setIsMutedToTrue();
+      setVolume(volume);
     } else {
-      setState({isMuted: false, volume});
+      setIsMutedToFalse();
+      setVolume(volume);
     }
   }
 
   updateRef() {
-    const {volume, isPlaying, isPaused, isLooped, isMuted} = this.props;
+    const {isLooped, /* withFlag: */ isPlaying, isPaused, isMuted, /* withPercentageCounter: */ volume} = this.props;
     const video = this.videoRef.current;
 
     if (video) {
@@ -76,7 +105,7 @@ class VideoPlayer extends React.Component {
   }
 
   render() {
-    const {src, isMuted, isPreview} = this.props;
+    const {src, isPreview, /* withFlag: */ isMuted} = this.props;
 
     const propsToParent = excludeProps(this.props, PROPS_TO_EXCLUDE);
 
@@ -85,8 +114,8 @@ class VideoPlayer extends React.Component {
     return src ?
       <>
         {isPreview &&
-          <Button style={{position: `absolute`, zIndex: `3`, bottom: `8px`, right: `8px`, display: `block`, margin: `0`, padding: `0 4px`, backgroundColor: `transparent`, border: `none`, cursor: `pointer`, transform: `translate3d(0, 0, 0)`}} title={isMuted ? `Unmute` : `Mute`} onClick={this.toggleVolume}>
-            <svg width="15" height="15" style={{transform: isMuted ? `translateX(1.3px)` : ``}}>
+          <Button style={styles.button} title={isMuted ? `Unmute` : `Mute`} onClick={this.toggleVolume}>
+            <svg width="15" height="15" style={styles.buttonIcon(isMuted)}>
               <use xlinkHref={isMuted ? `#muted` : `#not-muted`}/>
             </svg>
           </Button>
@@ -99,15 +128,14 @@ class VideoPlayer extends React.Component {
 VideoPlayer.displayName = getLabeledDisplayName(`Proxy`, VideoPlayer);
 
 VideoPlayer.propTypes = propTypes;
-VideoPlayer.defaultProps = {
-  volume: Config.VIDEO_PLAYER_DEFAULT_VOLUME,
-  isPlaying: true,
-  isPaused: false,
-  isLooped: false,
-  isMuted: false
-};
 
-const VideoPlayerStateUpdate = withState(VideoPlayer);
+const VideoPlayerMemo = React.memo(VideoPlayer);
+const VideoPlayerWrapped = compose(
+    (Component) => withFlag(Component, `isPlaying`, Config.VIDEO_PLAYER_IS_PLAYING_ON_START),
+    (Component) => withFlag(Component, `isPaused`, !Config.VIDEO_PLAYER_IS_PLAYING_ON_START),
+    (Component) => withFlag(Component, `isMuted`, Config.VIDEO_PLAYER_IS_MUTED_ON_START),
+    (Component) => withPercentageCounter(Component, `volume`, Config.VIDEO_PLAYER_DEFAULT_VOLUME)
+)(VideoPlayerMemo);
 
-export default VideoPlayerStateUpdate;
-export {VideoPlayer};
+export default VideoPlayerWrapped;
+export {VideoPlayer, VideoPlayerMemo};

@@ -1,15 +1,19 @@
 // Libraries
 import React from 'react';
 // Constants and utils
-import {bind, getLabeledDisplayName} from '../utils';
+import {bind, capitalizeFirstLetter, getLabeledDisplayName} from '../utils';
 
-function withCounter(Component, initialValue = 0) {
+function withCounter(Component, counterName, initialValue = 0, isResettableOnUpdate = false) {
   class WithCounter extends React.PureComponent {
     constructor(props) {
       super(props);
 
+      this.counterName = counterName;
+      this.initialValue = initialValue;
+      this.isResettableOnUpdate = isResettableOnUpdate;
+
       this.state = {
-        count: initialValue
+        [this.counterName]: this.initialValue
       };
 
       bind(this,
@@ -19,28 +23,39 @@ function withCounter(Component, initialValue = 0) {
       );
     }
 
-    incrementCounter(value) {
-      this.setState(({count}) => ({count: count + value}));
-    }
+    componentDidUpdate(_, nextState) {
+      if (!this.isResettableOnUpdate) {
+        return;
+      }
 
-    decrementCounter(value) {
-      this.setState(({count}) => ({count: count - value < 0 ? 0 : count - value}));
-    }
-
-    setCounter(value) {
-      this.setState({count: value < 0 ? 0 : value});
-    }
-
-    componentDidUpdate(_, {count: nextCount}) {
-      const {count} = this.state;
+      const count = this.state[this.counterName];
+      const nextCount = nextState[this.counterName];
 
       if (count === nextCount) {
-        this.setCounter(initialValue);
+        this.setCounter(this.initialValue);
       }
     }
 
+    incrementCounter(value) {
+      this.setState((state) => ({[this.counterName]: state[this.counterName] + value}));
+    }
+
+    decrementCounter(value) {
+      this.setState((state) => ({[this.counterName]: state[this.counterName] - value < 0 ? 0 : state[this.counterName] - value}));
+    }
+
+    setCounter(value) {
+      this.setState({[this.counterName]: value < 0 ? 0 : value});
+    }
+
     render() {
-      return <Component {...this.props} {...this.state} incrementCounter={this.incrementCounter} decrementCounter={this.decrementCounter} setCounter={this.setCounter}/>;
+      const methods = {
+        [`increment${capitalizeFirstLetter(this.counterName)}`]: this.incrementCounter,
+        [`decrement${capitalizeFirstLetter(this.counterName)}`]: this.incrementCounter,
+        [`set${capitalizeFirstLetter(this.counterName)}`]: this.setCounter
+      };
+
+      return <Component {...this.props} {...this.state} {...methods}/>;
     }
   }
 

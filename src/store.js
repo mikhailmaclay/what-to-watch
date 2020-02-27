@@ -10,7 +10,8 @@ import users from './mocks/users';
 const initialState = {
   movies,
   reviews,
-  users
+  users,
+  specialMovie: 1
 };
 
 const store = applyMiddleware()(createStore)(

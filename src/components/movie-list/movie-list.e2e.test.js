@@ -32,16 +32,23 @@ const movies = new Array(TEST_MOVIES_COUNT).fill(``).map((movie, index) => ({
   background: `https://via.placeholder.com/1300x552`
 }));
 
-const count = 10;
-const incrementCounter = jest.fn();
+describe(`<MovieList/>`, () => {
+  const props = {
+    movies,
+    renderedMovieCards: 8, // withCounter
+    incrementRenderedMovieCards: jest.fn() // withCounter
+  };
 
-it(`<MovieList/>: click on th Show More button should call a callback and pass it a parameter with a number`, () => {
-  const movieList = shallow(
-      <MovieList movies={movies} incrementCounter={incrementCounter} count={count}/>
-  );
+  it(`click on th Show More button should call a callback and pass it a parameter with a number`, () => {
+    const {incrementRenderedMovieCards} = props;
 
-  movieList.find(`.catalog__button`).simulate(`click`, {button: 0});
+    const movieList = shallow(
+        <MovieList {...props}/>
+    );
 
-  expect(incrementCounter).toHaveBeenCalledTimes(1);
-  expect(incrementCounter.mock.calls[0][0]).toEqual(Config.MOVIE_CARDS_COUNT_BY_LOAD);
+    movieList.find(`.catalog__button`).simulate(`click`, {button: 0});
+
+    expect(incrementRenderedMovieCards).toHaveBeenCalledTimes(1);
+    expect(incrementRenderedMovieCards.mock.calls[0][0]).toEqual(Config.MOVIE_CARDS_COUNT_BY_LOAD);
+  });
 });

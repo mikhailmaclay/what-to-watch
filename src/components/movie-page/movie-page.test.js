@@ -24,38 +24,34 @@ const movies = [
       {fullName: `Willem Dafoe`, role: `Actor`},
       {fullName: `Adrien Brody`, role: `Actor`}
     ],
-    reviews: [1],
+    reviews: [
+      {
+        id: {id: 1, fullName: `Shia LaBeouf`},
+        user: 1,
+        rating: 5,
+        date: `November 18, 2020 03:24:00`,
+        text: `DO! IT!`
+      }
+    ],
     poster: `/img/the-grand-budapest-hotel-poster.jpg`,
     background: `/img/bg-the-grand-budapest-hotel.jpg`,
   }
 ];
 
-const reviews = [
-  {
-    id: 1,
-    user: 1,
-    rating: 5,
-    date: `November 18, 2020 03:24:00`,
-    text: `DO! IT!`
-  }
-];
+describe(`<MoviePage/>`, () => {
+  const props = {
+    movies,
+    history: {push: () => {}}, // withRouter
+    baseUrl: ``,
+  };
 
-const users = [
-  {id: 1, fullName: `Shia LaBeouf`}
-];
+  it(`should render correctly`, () => {
+    const result = renderer.create(
+        <BrowserRouter>
+          <MoviePage {...props}/>
+        </BrowserRouter>
+    ).toJSON();
 
-const match = {
-  params: {
-    id: 1
-  }
-};
-
-it(`<MoviePage/> should render correctly`, () => {
-  const result = renderer.create(
-      <BrowserRouter>
-        <MoviePage movies={movies} reviews={reviews} users={users} match={match}/>
-      </BrowserRouter>
-  ).toJSON();
-
-  expect(result).toMatchSnapshot();
+    expect(result).toMatchSnapshot();
+  });
 });

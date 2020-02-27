@@ -1,66 +1,47 @@
 // Libraries
 import React from 'react';
-import {Link, Route, Switch, Redirect} from 'react-router-dom';
+import {Route, Switch, Redirect} from 'react-router-dom';
 // PropTypes
 import propTypes from './movie-page.prop-types';
 // Constants and utils
-import {Config, PathName} from '../../consts';
-import {
-  getArithmeticMean,
-  getMovieById,
-  getSimilarMovies,
-  getTeamMembersByRole,
-  getLevelFromNumber,
-  getReviewsByIds,
-  getRatings
-} from '../../utils';
+import {PathName} from '../../consts';
+import {isCurrentUrl} from '../../utils';
 // Components
-import MovieList from '../movie-list/movie-list';
+import {MovieListMemo} from '../movie-list/movie-list';
 import Footer from '../footer/footer';
 import MoviePoster from '../movie-poster/movie-poster';
-import Header from '../header/header';
 import MovieDetails from '../movie-details/movie-details';
 import MovieOverview from '../movie-overview/movie-overview';
 import MovieReviews from '../movie-reviews/movie-reviews';
+import MovieHeader from '../movie-header/movie-header';
+import Link from '../link/link';
 
 const ACTIVE_MENU_ITEM_CLASS_NAME = `movie-nav__item--active`;
 
-function MoviePage({movies, reviews, users, match}) {
-  const movieId = parseInt(match.params.id, 10);
-
-  const movie = getMovieById(movies, movieId);
-
+function MoviePage({movie, baseUrl, /* withRouter: */ history}) {
   if (!movie) {
     return <Redirect to={PathName.ROOT}/>;
   }
 
-  const {name, genre, releaseDate, description, runTime, team, reviews: reviewsIds, poster, background} = movie;
-  const {pathname} = location;
+  const {name, genre, releaseDate, description, runTime, directors, actors, reviews, score, level, poster, background, similarMovies} = movie;
 
-  const basePathname = `${PathName.MOVIE_PAGE}${movieId}`;
-  const detailsPathname = `${basePathname}/details`;
-  const reviewsPathname = `${basePathname}/reviews`;
-
-  const similarMovies = getSimilarMovies(movies, movieId, genre, Config.SIMILAR_MOVIES_COUNT);
-
-  const thisReviews = getReviewsByIds(reviews, reviewsIds);
-  const ratings = getRatings(thisReviews);
-  const score = getArithmeticMean(ratings, Config.MOVIE_SCORE_PRECISION);
-  const level = getLevelFromNumber(score, Config.MOVIE_LEVEL_MAP);
-  const directors = getTeamMembersByRole(team, `Director`);
-  const actors = getTeamMembersByRole(team, `Actor`);
+  const detailsPathname = `${baseUrl}/details`;
+  const reviewsPathname = `${baseUrl}/reviews`;
 
   const renderNavigation = () => (
     <nav className="movie-nav movie-card__nav">
       <ul className="movie-nav__list">
-        <li className={`movie-nav__item ${pathname === basePathname && ACTIVE_MENU_ITEM_CLASS_NAME}`}>
-          <Link to={basePathname} className="movie-nav__link">Overview</Link>
+        <li className={`movie-nav__item ${isCurrentUrl(baseUrl) && ACTIVE_MENU_ITEM_CLASS_NAME}`}>
+          {/* eslint-disable-next-line react/prop-types */}
+          <Link to={baseUrl} onClick={() => history.push(baseUrl)} className="movie-nav__link">Overview</Link>
         </li>
-        <li className={`movie-nav__item ${pathname === detailsPathname && ACTIVE_MENU_ITEM_CLASS_NAME}`}>
-          <Link to={detailsPathname} className="movie-nav__link">Details</Link>
+        <li className={`movie-nav__item ${isCurrentUrl(detailsPathname) && ACTIVE_MENU_ITEM_CLASS_NAME}`}>
+          {/* eslint-disable-next-line react/prop-types */}
+          <Link to={detailsPathname} onClick={() => history.push(detailsPathname)} className="movie-nav__link">Details</Link>
         </li>
-        <li className={`movie-nav__item ${pathname === reviewsPathname && ACTIVE_MENU_ITEM_CLASS_NAME}`}>
-          <Link to={reviewsPathname} className="movie-nav__link">Reviews</Link>
+        <li className={`movie-nav__item ${isCurrentUrl(reviewsPathname) && ACTIVE_MENU_ITEM_CLASS_NAME}`}>
+          {/* eslint-disable-next-line react/prop-types */}
+          <Link to={reviewsPathname} onClick={() => history.push(reviewsPathname)} className="movie-nav__link">Reviews</Link>
         </li>
       </ul>
     </nav>
@@ -69,54 +50,24 @@ function MoviePage({movies, reviews, users, match}) {
   return (
     <>
       <section className="movie-card movie-card--full">
-        <div className="movie-card__hero">
-          <div className="movie-card__bg">
-            <img src={background} alt={name}/>
-          </div>
-          <h1 className="visually-hidden">WTW</h1>
-          <Header/>
-          <div className="movie-card__wrap">
-            <div className="movie-card__desc">
-              <h2 className="movie-card__title">{name}</h2>
-              <p className="movie-card__meta">
-                <span className="movie-card__genre">{genre}</span>
-                <span className="movie-card__year">{releaseDate}</span>
-              </p>
-              <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
-                  <svg viewBox="0 0 19 19" width="19" height="19">
-                    <use xlinkHref="#play-s"/>
-                  </svg>
-                  <span>Play</span>
-                </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"/>
-                  </svg>
-                  <span>My list</span>
-                </button>
-                <Link to={PathName.ADD_REVIEW} className="btn movie-card__button">Add review</Link>
-              </div>
-            </div>
-          </div>
-        </div>
+        <MovieHeader name={name} releaseDate={releaseDate} genre={genre} background={background}/>
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <MoviePoster className="movie-card__poster movie-card__poster--big" src={poster} alt={name}/>
             <div className="movie-card__desc">
               {renderNavigation()}
               <Switch>
-                <Route path={basePathname} exact>
-                  <MovieOverview actors={actors} score={score} level={level} ratingsCount={ratings.length} directors={directors} description={description}/>
+                <Route path={baseUrl} exact>
+                  <MovieOverview actors={actors} score={score} level={level} reviewsCount={reviews.length} directors={directors} description={description}/>
                 </Route>
                 <Route path={detailsPathname} exact>
                   <MovieDetails releaseDate={releaseDate} genre={genre} actors={actors} runTime={runTime} directors={directors}/>
                 </Route>
                 <Route path={reviewsPathname} exact>
-                  <MovieReviews reviews={thisReviews} users={users}/>
+                  <MovieReviews reviews={reviews}/>
                 </Route>
                 <Route>
-                  <Redirect to={basePathname}/>
+                  <Redirect to={baseUrl}/>
                 </Route>
               </Switch>
             </div>
@@ -127,7 +78,7 @@ function MoviePage({movies, reviews, users, match}) {
         {!!similarMovies.length &&
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
-            <MovieList movies={similarMovies}/>
+            <MovieListMemo movies={similarMovies}/>
           </section>
         }
         <Footer/>
@@ -138,4 +89,4 @@ function MoviePage({movies, reviews, users, match}) {
 
 MoviePage.propTypes = propTypes;
 
-export default MoviePage;
+export default React.memo(MoviePage);

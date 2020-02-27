@@ -10,20 +10,27 @@ const specialMovie = {
   name: `The Grand Budapest Hotel`,
   genre: `Comedy`,
   releaseDate: `2014`,
+  images: [``],
   poster: `img/the-grand-budapest-hotel-poster.jpg`,
   background: `img/bg-the-grand-budapest-hotel.jpg`
 };
 
 const genres = [{name: `Comedy`, url: `comedy`}];
 
-const handleMovieCardTitleClick = () => {};
+describe(`<Main/> should render correctly`, () => {
+  const props = {
+    genres,
+    specialMovie,
+    movies: [specialMovie],
+  };
 
-it(`<Main/> should render correctly`, () => {
-  const result = renderer.create(
-      <BrowserRouter>
-        <Main specialMovie={specialMovie} movies={[]} genres={genres} onMovieCardTitleClick={handleMovieCardTitleClick}/>
-      </BrowserRouter>
-  ).toJSON();
+  it(`should render correctly`, () => {
+    const result = renderer.create(
+        <BrowserRouter>
+          <Main {...props}/>
+        </BrowserRouter>
+    ).toJSON();
 
-  expect(result).toMatchSnapshot();
+    expect(result).toMatchSnapshot();
+  });
 });

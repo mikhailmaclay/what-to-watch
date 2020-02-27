@@ -12,15 +12,19 @@ const movies = [
     images: [`/img/the-grand-budapest-hotel-poster.jpg`]
   }
 ];
-const count = 10;
-const incrementCounter = () => {};
 
-it(`<MovieList/> should render correctly`, () => {
-  const result = renderer.create(
-      <BrowserRouter>
-        <MovieList movies={movies} count={count} incrementCounter={incrementCounter}/>
-      </BrowserRouter>
-  ).toJSON();
+describe(`<MovieList/>`, () => {
+  const props = {
+    movies
+  };
 
-  expect(result).toMatchSnapshot();
+  it(`should render correctly`, () => {
+    const result = renderer.create(
+        <BrowserRouter>
+          <MovieList {...props}/>
+        </BrowserRouter>
+    ).toJSON();
+
+    expect(result).toMatchSnapshot();
+  });
 });

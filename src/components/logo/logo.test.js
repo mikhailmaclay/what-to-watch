@@ -1,16 +1,15 @@
 // Libraries
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {BrowserRouter} from 'react-router-dom';
 // Components
-import Logo from './logo';
+import {Logo} from './logo';
 
-it(`<Logo/> should render correctly`, () => {
-  const result = renderer.create(
-      <BrowserRouter>
+describe(`<Logo/>`, () => {
+  it(`should render correctly`, () => {
+    const result = renderer.create(
         <Logo/>
-      </BrowserRouter>
-  ).toJSON();
+    ).toJSON();
 
-  expect(result).toMatchSnapshot();
+    expect(result).toMatchSnapshot();
+  });
 });

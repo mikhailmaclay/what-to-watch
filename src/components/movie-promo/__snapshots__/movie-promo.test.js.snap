@@ -24,7 +24,7 @@ exports[`<MoviePromo/> should render correctly 1`] = `
       className="logo"
     >
       <a
-        className="logo__link undefined"
+        className="logo__link "
       >
         <span
           className="logo__letter logo__letter--1"
@@ -79,9 +79,13 @@ exports[`<MoviePromo/> should render correctly 1`] = `
       >
         <h2
           className="movie-card__title"
-          onClick={[Function]}
         >
-          The Grand Budapest Hotel
+          <a
+            href="/films/1"
+            onClick={[Function]}
+          >
+            The Grand Budapest Hotel
+          </a>
         </h2>
         <p
           className="movie-card__meta"

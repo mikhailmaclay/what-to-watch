@@ -1,28 +1,23 @@
 import PropTypes from 'prop-types';
 
 export default {
-  movies: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
+  movie: PropTypes.shape({
     name: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     releaseDate: PropTypes.string.isRequired,
-    description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    runTime: PropTypes.number.isRequired,
-    team: PropTypes.arrayOf(PropTypes.shape({
-      fullName: PropTypes.string.isRequired,
-      role: PropTypes.string.isRequired
-    })).isRequired,
-    reviews: PropTypes.arrayOf(PropTypes.number).isRequired,
+    description: PropTypes.arrayOf(PropTypes.string).isRequired,
+    runTime: PropTypes.number,
+    directors: PropTypes.arrayOf(PropTypes.string).isRequired,
+    actors: PropTypes.arrayOf(PropTypes.string).isRequired,
+    reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
+    score: PropTypes.number.isRequired,
+    level: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
     background: PropTypes.string.isRequired,
-  })).isRequired,
-  reviews: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    user: PropTypes.number.isRequired,
-    date: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    text: PropTypes.string.isRequired
-  })).isRequired,
-  users: PropTypes.arrayOf(PropTypes.object).isRequired,
-  match: PropTypes.object.isRequired
+    similarMovies: PropTypes.arrayOf(PropTypes.object)
+  }),
+  baseUrl: PropTypes.string.isRequired,
+  history: PropTypes.shape({ // withRouter
+    push: PropTypes.func.isRequired
+  }).isRequired
 };

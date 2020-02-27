@@ -4,7 +4,6 @@ export default {
   movies: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired
   })).isRequired,
-  count: PropTypes.number.isRequired,
-  incrementCounter: PropTypes.func.isRequired,
-  onMouseOver: PropTypes.func
+  renderedMovieCards: PropTypes.number, // withCounter
+  incrementRenderedMovieCards: PropTypes.func, // withCounter
 };

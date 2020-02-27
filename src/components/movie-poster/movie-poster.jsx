@@ -22,4 +22,4 @@ MoviePoster.displayName = getLabeledDisplayName(`Proxy`, MoviePoster);
 
 MoviePoster.propTypes = propTypes;
 
-export default MoviePoster;
+export default React.memo(MoviePoster);

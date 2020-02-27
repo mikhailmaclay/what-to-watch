@@ -22,4 +22,4 @@ function Review({userName, date, rating, text}) {
 
 Review.propTypes = propTypes;
 
-export default Review;
+export default React.memo(Review);

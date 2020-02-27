@@ -11,4 +11,4 @@ function Button(props) {
 
 Button.displayName = getLabeledDisplayName(`Proxy`, Button);
 
-export default Button;
+export default React.memo(Button);

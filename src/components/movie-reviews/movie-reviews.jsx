@@ -2,22 +2,21 @@
 import React from 'react';
 // PropTypes
 import propTypes from './movie-reviews.prop-types';
+import defaultProps from './movie-reviews.default-props';
+// Styles
+import styles from './movie-reviews.styles';
 // Components
 import Review from '../review/review';
-import {getUserById, splitArray} from '../../utils';
+import {splitArray} from '../../utils';
 
 const FIRST_ITEM_INDEX = 0;
 
-function MovieReviews({reviews, users}) {
+function MovieReviews({reviews}) {
   const reviewsByColumns = splitArray(reviews);
 
   // eslint-disable-next-line no-shadow
   const renderReviews = (reviews) => (
-    reviews.map(({rating, user, date, text, id}) => {
-      const {fullName: userName} = getUserById(users, user);
-
-      return <Review key={id} rating={rating} userName={userName} date={date} text={text}/>;
-    })
+    reviews.map(({id, rating, user, date, text}) => <Review key={id} rating={rating} userName={user.fullName} date={date} text={text}/>)
   );
 
   return (
@@ -28,7 +27,7 @@ function MovieReviews({reviews, users}) {
             {renderReviews(column)}
           </div>))
         :
-        <span style={{color: `#252525`}}>There is no reviews yet</span>
+        <span style={styles.message}>There is no reviews yet</span>
       }
     </div>
   );
@@ -36,8 +35,6 @@ function MovieReviews({reviews, users}) {
 
 MovieReviews.propTypes = propTypes;
 
-MovieReviews.defaultProps = {
-  reviews: []
-};
+MovieReviews.defaultProps = defaultProps;
 
-export default MovieReviews;
+export default React.memo(MovieReviews);

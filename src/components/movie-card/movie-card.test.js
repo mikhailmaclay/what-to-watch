@@ -5,24 +5,21 @@ import {BrowserRouter} from 'react-router-dom';
 // Components
 import {MovieCard} from './movie-card';
 
-const movie = {
-  id: 1,
-  name: `Fantastic Beasts: The Crimes of Grindelwald`,
-  genre: `Fantasy`,
-  releaseDate: `March 13, 2014`,
-  images: [`img/fantastic-beasts-the-crimes-of-grindelwald.jpg`]
-};
+describe(`<MovieCard/>`, () => {
+  const props = {
+    id: 1,
+    name: `Fantastic Beasts: The Crimes of Grindelwald`,
+    preview: null,
+    images: [`img/fantastic-beasts-the-crimes-of-grindelwald.jpg`]
+  };
 
-const handleMovieCardMouseOver = () => {};
+  it(`should render correctly`, () => {
+    const result = renderer.create(
+        <BrowserRouter>
+          <MovieCard {...props}/>
+        </BrowserRouter>
+    ).toJSON();
 
-it(`<MovieCard/> should render correctly`, () => {
-  const {id, name, images} = movie;
-
-  const result = renderer.create(
-      <BrowserRouter>
-        <MovieCard id={id} name={name} images={images} onMovieCardMouseOver={handleMovieCardMouseOver}/>
-      </BrowserRouter>
-  ).toJSON();
-
-  expect(result).toMatchSnapshot();
+    expect(result).toMatchSnapshot();
+  });
 });

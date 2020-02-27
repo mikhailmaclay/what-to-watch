@@ -9,8 +9,6 @@ exports[`<GenreList/> should render correctly 1`] = `
   >
     <a
       className="catalog__genres-link"
-      href="/"
-      onClick={[Function]}
     >
       All genres
     </a>

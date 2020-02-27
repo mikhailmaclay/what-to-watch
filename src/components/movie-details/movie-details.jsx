@@ -52,4 +52,4 @@ function MovieDetails({directors, actors, runTime, genre, releaseDate}) {
 
 MovieDetails.propTypes = propTypes;
 
-export default MovieDetails;
+export default React.memo(MovieDetails);

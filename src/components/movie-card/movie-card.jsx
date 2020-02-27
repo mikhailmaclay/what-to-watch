@@ -6,15 +6,13 @@ import {withRouter} from 'react-router-dom';
 import propTypes from './movie-card.prop-types';
 // Constants and utils
 import {PathName} from '../../consts';
-import {getLabeledDisplayName} from '../../utils';
+import {compose} from '../../utils';
 // HOCs
-import withPreviewOnHover from '../../hocs/with-preview-on-hover';
+import withPreviewOnHover from '../../hocs/with-preview-on-hover/with-preview-on-hover';
 
 const FIRST_IMAGE = 0;
 
-function MovieCard({id, name, preview, images, history, renderPreview, onMouseEnter, onMouseLeave}) {
-  // history is from withRouter HOC; renderPreview, onMouseEnter, onMouseLeave are from withPreviewOnHover HOC
-
+function MovieCard({id, name, preview, images, /* withRouter: */ history, /* withPreviewOnHover: */ renderPreview, onMouseEnter, onMouseLeave}) {
   const handleClick = () => !preview && history.push(PathName.MOVIE_PAGE + id);
 
   return (
@@ -32,11 +30,11 @@ function MovieCard({id, name, preview, images, history, renderPreview, onMouseEn
 
 MovieCard.propTypes = propTypes;
 
-const MovieCardWithRouter = withRouter(MovieCard);
+const MovieCardMemo = React.memo(MovieCard);
 
-MovieCardWithRouter.displayName = getLabeledDisplayName(`WithRouter`, MovieCard);
+MovieCardMemo.displayName = `MovieCard`;
 
-const MovieCardWithPreviewOnHover = withPreviewOnHover(MovieCardWithRouter);
+const MovieCardWrapped = compose(withRouter, withPreviewOnHover)(MovieCardMemo);
 
-export default MovieCardWithPreviewOnHover;
-export {MovieCard};
+export default MovieCardWrapped;
+export {MovieCard, MovieCardMemo};

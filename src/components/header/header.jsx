@@ -1,14 +1,14 @@
 // Libraries
 import React from 'react';
 // Components
-import Logo from '../logo/logo';
+import LogoWrapped from '../logo/logo';
 
 function Header() {
   const isUserLoggedIn = true;
 
   return (
     <header className="page-header movie-card__head">
-      <Logo/>
+      <LogoWrapped/>
       {isUserLoggedIn &&
         <div className="user-block">
           <div className="user-block__avatar">
@@ -20,4 +20,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default React.memo(Header);

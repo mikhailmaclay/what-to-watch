@@ -14,14 +14,18 @@ const specialMovie = {
   background: `img/bg-the-grand-budapest-hotel.jpg`
 };
 
-const handleMovieCardTitleClick = () => {};
+describe(`<MoviePromo/>`, () => {
+  const props = {
+    specialMovie
+  };
 
-it(`<MoviePromo/> should render correctly`, () => {
-  const result = renderer.create(
-      <BrowserRouter>
-        <MoviePromo specialMovie={specialMovie} onMovieCardTitleClick={handleMovieCardTitleClick}/>
-      </BrowserRouter>
-  ).toJSON();
+  it(`should render correctly`, () => {
+    const result = renderer.create(
+        <BrowserRouter>
+          <MoviePromo {...props}/>
+        </BrowserRouter>
+    ).toJSON();
 
-  expect(result).toMatchSnapshot();
+    expect(result).toMatchSnapshot();
+  });
 });

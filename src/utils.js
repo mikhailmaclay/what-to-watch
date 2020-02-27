@@ -53,10 +53,22 @@ export const getLevelFromNumber = (number, milestones) => {
 
   return ``;
 };
+export const reduceToPercents = (number) => {
+  if (number < 0) {
+    return 0;
+  }
+
+  if (number > 1) {
+    return 1;
+  }
+
+  return number;
+};
 
 // Working with strings
 export const formatToUrl = (string) => string.replace(/\s/g, `-`).replace(/[^-\w]/g, ``).replace(`--`, `-`).toLowerCase();
 export const formatScore = (score) => score >= 10 ? score + `.0` : String(score).padEnd(Config.MOVIE_SCORE_PRECISION, `.0`);
+export const capitalizeFirstLetter = (string) => string[0].toUpperCase() + string.slice(1);
 
 // Working with arrays
 export const splitArray = (array) => {
@@ -72,6 +84,76 @@ export const splitArray = (array) => {
   if (second.length) {
     temp.push(second);
   }
+
+  return temp;
+};
+export const convertToMap = (propertyNames, list) => {
+  const [propertyName1, propertyName2] = propertyNames;
+
+  const temp = {};
+
+  list.forEach((item) => {
+    temp[item[propertyName1]] = item[propertyName2];
+  });
+
+  return temp;
+};
+
+// Working with objects
+export const extend = (...objects) => {
+  const temp = {};
+
+  objects.forEach((object) => Object.assign(temp, object));
+
+  return temp;
+};
+export const clone = (object) => Object.assign({}, object);
+export const join = (property, list1, list2) => {
+  const tempList = list1.slice();
+
+  if (Array.isArray(property)) {
+    const [propertyName1, propertyName2] = property;
+
+    tempList.forEach((item1, index) => {
+      const tempItem1 = clone(item1);
+
+      const item2 = list2.find((item) => tempItem1[propertyName1] === item[propertyName2]);
+
+      if (!item2) {
+        return;
+      }
+
+      tempItem1[propertyName1] = clone(item2);
+
+      // delete tempItem1[propertyName1][propertyName2];
+
+      tempList[index] = tempItem1;
+    });
+  } else if (typeof property === `string`) {
+    tempList.forEach((item1, index) => {
+      const item2 = list2.find((item) => item1 === item[property]);
+
+      if (!item2) {
+        return;
+      }
+
+      tempList[index] = clone(item2);
+    });
+  }
+
+  return tempList;
+};
+
+// Working with url
+export const isCurrentUrl = (url) => window.location.pathname + window.location.search === url;
+export const extractUrlSearchParams = () => {
+  const urlSearchParams = new URLSearchParams(window.location.search);
+
+  const temp = {};
+
+  urlSearchParams.forEach((value, key) => {
+    temp[key] = value;
+  });
 
   return temp;
 };
@@ -109,6 +191,10 @@ export const getTeamMembersByRole = (team, role) => getFilter(FilterName.Team.RO
 
 // Filtering
 export const getFilter = (filterName, query) => {
+  if (!query) {
+    return (data) => data;
+  }
+
   switch (filterName) {
     case FilterName.Movie.GENRE:
       return (movies) => movies.filter((movie) => movie.genre === query);
@@ -124,24 +210,5 @@ export const getFilter = (filterName, query) => {
   }
 };
 export const getSimilarMovies = (movies, exceptId, genre, count) => compose(getFilter(FilterName.Movie.EXCEPT_ID, exceptId), getFilter(FilterName.Movie.GENRE, genre))(movies).slice(0, count);
-export const filterByGenreSearch = (movies) => {
-  const genres = getGenres(movies);
-  const genreUrl = getGenreUrlSearchValue();
-  const genreName = getGenreNameByUrl(genres, genreUrl);
 
-  return getFilter(FilterName.Movie.GENRE, genreName)(movies);
-};
 
-// Not for export
-function getGenreNameByUrl(genres, genreUrl) {
-  const genreObj = genres.find((genre) => genre.url === genreUrl);
-
-  return genreObj ? genreObj.name : ``;
-}
-function getGenreUrlSearchValue() {
-  const {search} = location;
-  const urlSearchParams = new URLSearchParams(search);
-  const genreUrl = urlSearchParams.get(`genre`);
-
-  return genreUrl || ``;
-}
