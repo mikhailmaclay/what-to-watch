@@ -10,9 +10,14 @@ export const Config = {
     3: `Normal`,
     0: `Bad`
   },
+  MOVIE_PROMO_RELEASE_DATE_FORMAT: `MMMM DD, YYYY`,
+  MOVIE_DETAILS_RELEASE_DATE_FORMAT: `YYYY`,
+  MOVIE_DETAILS_RUN_TIME_FORMAT: `H[h] m[m]`,
+  REVIEW_DATE_FORMAT: `MMMM DD, YYYY`,
   MOVIE_DEFAULT_SCORE: 0,
   MOVIE_OVERVIEW_ACTORS_COUNT: 4,
   SIMILAR_MOVIES_COUNT: 4,
+  VIDEO_PLAYER_PLAY_TIME_FORMAT: `HH:mm:ss`,
   VIDEO_PLAYER_DEFAULT_VOLUME: 1,
   VIDEO_PLAYER_IS_MUTED_ON_START: false,
   VIDEO_PLAYER_IS_PLAYING_ON_START: true,
@@ -28,16 +33,44 @@ export const PathName = {
   ROOT: `/`,
   MOVIE_FILTER: `/films`,
   MOVIE_PAGE: `/films/`,
-  ADD_REVIEW: `/add-review`
+  ADD_REVIEW: `/add-review`,
+  WATCH: `/watch/`
 };
 
 export const FilterName = {
-  Movie: {
-    EXCEPT_ID: `ID`,
-    GENRE: `GENRE`
+  MOVIES: {
+    ID: `FILTER_MOVIE_ID`,
+    EXCEPT_ID: `FILTER_MOVIE_EXCEPT_ID`,
+    GENRE: `FILTER_MOVIE_GENRE`
   },
-  Team: {
-    ROLE: `ROLE`
+  TEAM: {
+    ROLE: `FILTER_TEAM_ROLE`
+  },
+  REVIEWS: {
+    ID: `FILTER_REVIEW_ID`
+  },
+  USERS: {
+    ID: `FILTER_USER_ID`
   }
+};
+
+export const ExtractorName = {
+  MOVIES: {
+    GENRES: `EXTRACTOR_MOVIES_GENRES`
+  },
+  MOVIE: {
+    TEAM: `EXTRACTOR_MOVIE_TEAM`,
+    RATINGS: `EXTRACTOR_MOVIE_RATINGS`
+  }
+};
+
+export const ConverterName = {
+  RATING: {
+    LEVEL: `CONVERTER_RATING_LEVEL`
+  }
+};
+
+export const KeyCode = {
+  ESC: `Escape`
 };
 

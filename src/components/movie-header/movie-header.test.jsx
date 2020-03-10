@@ -7,6 +7,7 @@ import MovieHeader from './movie-header';
 
 describe(`<MovieHeader/>`, () => {
   const props = {
+    id: 1,
     name: `The Grand Budapest Hotel`,
     background: `/img/movies/backgrounds/1.jpg`,
     genre: `Drama`,

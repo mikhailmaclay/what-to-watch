@@ -4,12 +4,14 @@ import {Link} from 'react-router-dom';
 // PropTypes
 import propTypes from './movie-header.prop-types';
 // Constants and utils
-import {PathName} from '../../consts';
+import {Config, PathName} from '../../consts';
+import getDate from '../../utils/time/get-date';
 // Components
 import Button from '../button/button';
 import Header from '../header/header';
+import Icon from '../icon/icon';
 
-function MovieHeader({name, background, genre, releaseDate}) {
+function MovieHeader({id, name, background, genre, releaseDate}) {
   return (
     <div className="movie-card__hero">
       <div className="movie-card__bg">
@@ -22,19 +24,15 @@ function MovieHeader({name, background, genre, releaseDate}) {
           <h2 className="movie-card__title">{name}</h2>
           <p className="movie-card__meta">
             <span className="movie-card__genre">{genre}</span>
-            <span className="movie-card__year">{releaseDate}</span>
+            <span className="movie-card__year">{getDate(Config.MOVIE_PROMO_RELEASE_DATE_FORMAT)(releaseDate)}</span>
           </p>
           <div className="movie-card__buttons">
-            <Button className="btn btn--play movie-card__button">
-              <svg viewBox="0 0 19 19" width="19" height="19">
-                <use xlinkHref="#play-s"/>
-              </svg>
+            <Link to={PathName.WATCH + id} className="btn btn--play movie-card__button">
+              <Icon name="play-s" width="19" height="19"/>
               <span>Play</span>
-            </Button>
+            </Link>
             <Button className="btn btn--list movie-card__button">
-              <svg viewBox="0 0 19 20" width="19" height="20">
-                <use xlinkHref="#add"/>
-              </svg>
+              <Icon name="add" width="19" height="20"/>
               <span>My list</span>
             </Button>
             <Link to={PathName.ADD_REVIEW} className="btn movie-card__button">Add review</Link>

@@ -3,7 +3,10 @@ import React from 'react';
 // PropTypes
 import propTypes from './movie-details.prop-types';
 // Constants and utils
-import {getYear, getDuration, pluralize} from '../../utils';
+import {Config} from '../../consts';
+import getDate from '../../utils/time/get-date';
+import getDuration from '../../utils/time/get-duration';
+import pluralize from '../../utils/numbers/pluralize';
 
 const DIRECTOR_WORD_FORMS = [`Director`, `Directors`, `Directors`];
 
@@ -12,7 +15,7 @@ function MovieDetails({directors, actors, runTime, genre, releaseDate}) {
     <div className="movie-card__text movie-card__row">
       <div className="movie-card__text-col">
         <p className="movie-card__details-item">
-          <strong className="movie-card__details-name">{pluralize(directors.length, DIRECTOR_WORD_FORMS)}</strong>
+          <strong className="movie-card__details-name">{pluralize(DIRECTOR_WORD_FORMS)(directors.length)}</strong>
           <span className="movie-card__details-value">
             {directors.map((director, index) => (
               <React.Fragment key={`${director}-${index}`}>
@@ -35,7 +38,7 @@ function MovieDetails({directors, actors, runTime, genre, releaseDate}) {
       <div className="movie-card__text-col">
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Run Time</strong>
-          <span className="movie-card__details-value">{getDuration(runTime)}</span>
+          <span className="movie-card__details-value">{getDuration(Config.MOVIE_DETAILS_RUN_TIME_FORMAT)(runTime).replace(/(:?^0h\s)|(:?\s0m$)/, ``)}</span>
         </p>
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Genre</strong>
@@ -43,7 +46,7 @@ function MovieDetails({directors, actors, runTime, genre, releaseDate}) {
         </p>
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Released</strong>
-          <span className="movie-card__details-value">{getYear(releaseDate)}</span>
+          <span className="movie-card__details-value">{getDate(Config.MOVIE_DETAILS_RELEASE_DATE_FORMAT)(releaseDate)}</span>
         </p>
       </div>
     </div>

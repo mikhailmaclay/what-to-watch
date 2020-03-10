@@ -2,7 +2,7 @@
 
 exports[`<Link/> should render correctly 1`] = `
 <a
-  href=""
+  href="/"
   onClick={[Function]}
 />
 `;

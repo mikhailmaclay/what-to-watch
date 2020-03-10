@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PreviewControls/> should render correctly 1`] = `
+<button
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "transparent",
+      "border": "none",
+      "bottom": "8px",
+      "cursor": "pointer",
+      "display": "block",
+      "margin": "0",
+      "padding": "0 4px",
+      "pointerEvents": "auto",
+      "position": "absolute",
+      "right": "8px",
+      "transform": "translate3d(0, 0, 0)",
+      "zIndex": "3",
+    }
+  }
+  title="Mute"
+  type="button"
+>
+  <svg
+    height="15"
+    style={
+      Object {
+        "transform": "",
+      }
+    }
+    viewBox="0 0 15 15"
+    width="15"
+  >
+    <use
+      xlinkHref="#not-muted"
+    />
+  </svg>
+</button>
+`;

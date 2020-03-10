@@ -2,7 +2,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 // Components
-import AppContainer from './app.container';
+import AppContainer from '../../containers/app';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 

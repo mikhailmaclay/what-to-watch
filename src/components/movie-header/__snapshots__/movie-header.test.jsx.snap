@@ -86,9 +86,10 @@ exports[`<MovieHeader/> should render correctly 1`] = `
       <div
         className="movie-card__buttons"
       >
-        <button
+        <a
           className="btn btn--play movie-card__button"
-          type="button"
+          href="/watch/1"
+          onClick={[Function]}
         >
           <svg
             height="19"
@@ -102,7 +103,7 @@ exports[`<MovieHeader/> should render correctly 1`] = `
           <span>
             Play
           </span>
-        </button>
+        </a>
         <button
           className="btn btn--list movie-card__button"
           type="button"

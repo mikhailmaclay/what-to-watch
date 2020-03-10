@@ -15,13 +15,13 @@ const specialMovie = {
   background: `img/bg-the-grand-budapest-hotel.jpg`
 };
 
-const genres = [{name: `Comedy`, url: `comedy`}];
-
 describe(`<Main/> should render correctly`, () => {
   const props = {
-    genres,
+    genres: [`Comedy`],
     specialMovie,
-    movies: [specialMovie],
+    movies: [],
+    currentGenre: null,
+    onGenreChange: () => {}
   };
 
   it(`should render correctly`, () => {

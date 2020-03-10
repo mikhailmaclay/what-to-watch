@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Video/> should render correctly 1`] = `
+<video
+  onCanPlayThrough={[Function]}
+  onClick={null}
+  onContextMenu={null}
+  onDoubleClick={null}
+  onDurationChange={[Function]}
+  onEnded={[Function]}
+  onTimeUpdate={null}
+  style={
+    Object {
+      "video": Object {
+        "objectFit": "cover",
+      },
+    }
+  }
+/>
+`;

@@ -16,9 +16,9 @@ exports[`<MovieList/> should render correctly 1`] = `
       onClick={[Function]}
     >
       <img
-        alt="The Grand Budapest Hotel"
+        alt="Fantastic Beasts: The Crimes of Grindelwald"
         height="175"
-        src="/img/the-grand-budapest-hotel-poster.jpg"
+        src="/img/movies/images/2-1.jpg"
         width="280"
       />
     </a>
@@ -28,7 +28,7 @@ exports[`<MovieList/> should render correctly 1`] = `
       <span
         className="small-movie-card__link"
       >
-        The Grand Budapest Hotel
+        Fantastic Beasts: The Crimes of Grindelwald
       </span>
     </h3>
   </article>

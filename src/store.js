@@ -11,7 +11,8 @@ const initialState = {
   movies,
   reviews,
   users,
-  specialMovie: 1
+  specialMovie: 1,
+  currentGenre: null
 };
 
 const store = applyMiddleware()(createStore)(

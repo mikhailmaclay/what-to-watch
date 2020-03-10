@@ -35,12 +35,12 @@ const movies = new Array(TEST_MOVIES_COUNT).fill(``).map((movie, index) => ({
 describe(`<MovieList/>`, () => {
   const props = {
     movies,
-    renderedMovieCards: 8, // withCounter
-    incrementRenderedMovieCards: jest.fn() // withCounter
+    isWithRenderedMovieCardsCounter: true,
+    withCounter: {renderedMovieCards: {value: 8, increment: jest.fn()}} // withCounter
   };
 
   it(`click on th Show More button should call a callback and pass it a parameter with a number`, () => {
-    const {incrementRenderedMovieCards} = props;
+    const incrementRenderedMovieCards = props.withCounter.renderedMovieCards.increment;
 
     const movieList = shallow(
         <MovieList {...props}/>

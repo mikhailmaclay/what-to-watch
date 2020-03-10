@@ -5,9 +5,10 @@ import propTypes from './movie-reviews.prop-types';
 import defaultProps from './movie-reviews.default-props';
 // Styles
 import styles from './movie-reviews.styles';
+// Constants and utils
+import splitArray from '../../utils/arrays/split-array';
 // Components
 import Review from '../review/review';
-import {splitArray} from '../../utils';
 
 const FIRST_ITEM_INDEX = 0;
 
@@ -27,14 +28,13 @@ function MovieReviews({reviews}) {
             {renderReviews(column)}
           </div>))
         :
-        <span style={styles.message}>There is no reviews yet</span>
+        <span style={styles.message}>There is no reviews yet.</span>
       }
     </div>
   );
 }
 
 MovieReviews.propTypes = propTypes;
-
 MovieReviews.defaultProps = defaultProps;
 
 export default React.memo(MovieReviews);

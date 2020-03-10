@@ -3,7 +3,7 @@ import React from 'react';
 // PropTypes
 import propTypes from './movie-poster.prop-types';
 // Constants and utils
-import {excludeProps, getLabeledDisplayName} from '../../utils';
+import excludeProps from '../../utils/components/exclude-props';
 
 const PROPS_TO_EXCLUDE = [`src`, `alt`];
 
@@ -17,8 +17,6 @@ function MoviePoster(props) {
     </div>
   );
 }
-
-MoviePoster.displayName = getLabeledDisplayName(`Proxy`, MoviePoster);
 
 MoviePoster.propTypes = propTypes;
 

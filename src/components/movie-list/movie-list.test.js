@@ -8,8 +8,8 @@ import {MovieList} from './movie-list';
 const movies = [
   {
     id: 1,
-    name: `The Grand Budapest Hotel`,
-    images: [`/img/the-grand-budapest-hotel-poster.jpg`]
+    name: `Fantastic Beasts: The Crimes of Grindelwald`,
+    images: [`/img/movies/images/2-1.jpg`],
   }
 ];
 

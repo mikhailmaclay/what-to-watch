@@ -99,15 +99,16 @@ Array [
             <span
               className="movie-card__year"
             >
-              2014
+              January 01, 2014
             </span>
           </p>
           <div
             className="movie-card__buttons"
           >
-            <button
+            <a
               className="btn btn--play movie-card__button"
-              type="button"
+              href="/watch/1"
+              onClick={[Function]}
             >
               <svg
                 height="19"
@@ -121,7 +122,7 @@ Array [
               <span>
                 Play
               </span>
-            </button>
+            </a>
             <button
               className="btn btn--list movie-card__button"
               type="button"
@@ -161,56 +162,50 @@ Array [
         <li
           className="catalog__genres-item catalog__genres-item--active"
         >
-          <a
+          <button
             className="catalog__genres-link"
+            disabled={true}
+            onClick={null}
+            style={
+              Object {
+                "background": "transparent",
+                "border": "none",
+                "cursor": "",
+                "paddingLeft": "0",
+                "paddingRight": "0",
+                "userSelect": "none",
+              }
+            }
+            type="button"
           >
             All genres
-          </a>
+          </button>
         </li>
         <li
-          className="catalog__genres-item false"
+          className="catalog__genres-item "
         >
-          <a
+          <button
             className="catalog__genres-link"
-            href="/films?genre=comedy"
+            disabled={false}
+            href="#"
             onClick={[Function]}
+            style={
+              Object {
+                "background": "transparent",
+                "border": "none",
+                "cursor": "pointer",
+                "paddingLeft": "0",
+                "paddingRight": "0",
+                "userSelect": "none",
+              }
+            }
+            type="button"
           >
             Comedy
-          </a>
+          </button>
         </li>
       </ul>
-      <div
-        className="catalog__movie-list"
-      >
-        <article
-          className="small-movie-card catalog__movie-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <a
-            className="small-movie-card__image"
-            href="/films/1"
-            onClick={[Function]}
-          >
-            <img
-              alt="The Grand Budapest Hotel"
-              height="175"
-              src=""
-              width="280"
-            />
-          </a>
-          <h3
-            className="small-movie-card__title"
-          >
-            <span
-              className="small-movie-card__link"
-            >
-              The Grand Budapest Hotel
-            </span>
-          </h3>
-        </article>
-      </div>
+      Sorry, there is no matching results.
     </section>
     <footer
       className="page-footer"

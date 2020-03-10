@@ -15,7 +15,7 @@ describe(`<Review/>`, () => {
   it(`should render correctly`, () => {
     const result = renderer.create(
         <Review {...props}/>
-    );
+    ).toJSON();
 
     expect(result).toMatchSnapshot();
   });

@@ -7,22 +7,47 @@ exports[`<GenreList/> should render correctly 1`] = `
   <li
     className="catalog__genres-item catalog__genres-item--active"
   >
-    <a
+    <button
       className="catalog__genres-link"
+      disabled={true}
+      onClick={null}
+      style={
+        Object {
+          "background": "transparent",
+          "border": "none",
+          "cursor": "",
+          "paddingLeft": "0",
+          "paddingRight": "0",
+          "userSelect": "none",
+        }
+      }
+      type="button"
     >
       All genres
-    </a>
+    </button>
   </li>
   <li
-    className="catalog__genres-item false"
+    className="catalog__genres-item "
   >
-    <a
+    <button
       className="catalog__genres-link"
-      href="/films?genre=comedy"
+      disabled={false}
+      href="#"
       onClick={[Function]}
+      style={
+        Object {
+          "background": "transparent",
+          "border": "none",
+          "cursor": "pointer",
+          "paddingLeft": "0",
+          "paddingRight": "0",
+          "userSelect": "none",
+        }
+      }
+      type="button"
     >
       Comedy
-    </a>
+    </button>
   </li>
 </ul>
 `;

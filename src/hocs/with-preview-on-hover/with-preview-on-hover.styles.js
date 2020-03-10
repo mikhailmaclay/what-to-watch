@@ -1,3 +1,3 @@
 export default {
-  videoPlayer: {position: `absolute`, zIndex: `2`, objectFit: `cover`, pointerEvents: `none`}
+  video: {position: `absolute`, zIndex: `2`, pointerEvents: `none`}
 };

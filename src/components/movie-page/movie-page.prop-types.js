@@ -16,8 +16,5 @@ export default {
     background: PropTypes.string.isRequired,
     similarMovies: PropTypes.arrayOf(PropTypes.object)
   }),
-  baseUrl: PropTypes.string.isRequired,
-  history: PropTypes.shape({ // withRouter
-    push: PropTypes.func.isRequired
-  }).isRequired
+  baseUrl: PropTypes.string.isRequired
 };

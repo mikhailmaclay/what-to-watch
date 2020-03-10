@@ -2,13 +2,13 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 // Components
-import {GenreList} from './genre-list';
-
-const genres = [{name: `Comedy`, url: `comedy`}];
+import GenreList from './genre-list';
 
 describe(`<GenreList/>`, () => {
   const props = {
-    genres
+    genres: [`Comedy`],
+    currentGenre: null,
+    onGenreChange: () => {}
   };
 
   it(`should render correctly`, () => {

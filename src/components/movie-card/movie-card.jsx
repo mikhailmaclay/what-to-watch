@@ -1,14 +1,12 @@
 // Libraries
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {withRouter} from 'react-router-dom';
 // PropTypes
 import propTypes from './movie-card.prop-types';
 // Constants and utils
 import {PathName} from '../../consts';
-import {compose} from '../../utils';
-// HOCs
-import withPreviewOnHover from '../../hocs/with-preview-on-hover/with-preview-on-hover';
+import compose from '../../utils/composition/compose';
+import createHOC from '../../utils/components/create-hoc';
 
 const FIRST_IMAGE = 0;
 
@@ -31,10 +29,7 @@ function MovieCard({id, name, preview, images, /* withRouter: */ history, /* wit
 MovieCard.propTypes = propTypes;
 
 const MovieCardMemo = React.memo(MovieCard);
-
-MovieCardMemo.displayName = `MovieCard`;
-
-const MovieCardWrapped = compose(withRouter, withPreviewOnHover)(MovieCardMemo);
+const MovieCardWrapped = compose(createHOC(`withRouter`), createHOC(`withPreviewOnHover`))(MovieCardMemo);
 
 export default MovieCardWrapped;
 export {MovieCard, MovieCardMemo};

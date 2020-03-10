@@ -3,7 +3,9 @@ import React from 'react';
 // PropTypes
 import propTypes from './review.prop-types';
 // Constants and utils
-import {formatScore, getDate} from '../../utils';
+import {Config} from '../../consts';
+import padEndWithZero from '../../utils/strings/pad-end-with-zero';
+import getDate from '../../utils/time/get-date';
 
 function Review({userName, date, rating, text}) {
   return (
@@ -12,10 +14,10 @@ function Review({userName, date, rating, text}) {
         <p className="review__text">{text}</p>
         <footer className="review__details">
           <cite className="review__author">{userName}</cite>
-          <time className="review__date" dateTime={date}>{getDate(date)}</time>
+          <time className="review__date" dateTime={date}>{getDate(Config.REVIEW_DATE_FORMAT)(date)}</time>
         </footer>
       </blockquote>
-      <div className="review__rating">{formatScore(rating)}</div>
+      <div className="review__rating">{padEndWithZero(rating)}</div>
     </div>
   );
 }

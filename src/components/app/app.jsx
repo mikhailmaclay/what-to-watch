@@ -5,8 +5,9 @@ import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 // PropTypes
 import propTypes from './app.prop-types';
 // Components
-import MainContainerWrapped, {MainContainer} from '../main/main.container';
-import MoviePageContainerWrapped from '../movie-page/movie-page.container';
+import MainContainer from '../../containers/main';
+import MoviePageContainerWrapped from '../../containers/movie-page/movie-page';
+import VideoPlayerContainerWrapped from '../../containers/watch-page/watch-page';
 
 function App({movies}) {
   return (
@@ -15,11 +16,11 @@ function App({movies}) {
         <Route path={PathName.ROOT} exact>
           <MainContainer movies={movies}/>
         </Route>
-        <Route path={`${PathName.MOVIE_FILTER}`} exact>
-          <MainContainerWrapped movies={movies}/>
-        </Route>
         <Route path={`${PathName.MOVIE_PAGE}:id`}>
           <MoviePageContainerWrapped movies={movies}/>
+        </Route>
+        <Route path={`${PathName.WATCH}:id`} exact>
+          <VideoPlayerContainerWrapped movies={movies} isAutoPlay isLooped/>
         </Route>
         <Route>
           <Redirect to={PathName.ROOT}/>
