@@ -7,7 +7,6 @@ import MovieReviews from './movie-reviews';
 const reviews = [
   {
     id: 1,
-    movie: 1,
     user: {id: 1, fullName: `Shia LaBeouf`},
     date: `March 13, 2014 03:20:21`,
     rating: 10,
@@ -20,7 +19,7 @@ describe(`<MovieReviews/>`, () => {
     reviews
   };
 
-  it(`should render correctly`, () => {
+  it(`Should render correctly`, () => {
     const result = renderer.create(
         <MovieReviews {...props}/>
     ).toJSON();

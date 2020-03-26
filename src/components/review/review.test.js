@@ -12,7 +12,7 @@ describe(`<Review/>`, () => {
     text: `DO! IT!`
   };
 
-  it(`should render correctly`, () => {
+  it(`Should render correctly`, () => {
     const result = renderer.create(
         <Review {...props}/>
     ).toJSON();

@@ -5,7 +5,7 @@ import propTypes from './watch-page-controls.prop.types';
 // Styles
 import styles from '../watch-page-controls/watch-page-controls.styles';
 // Constants and utils
-import {Config} from '../../consts';
+import {Config} from '../../constants/consts';
 import getDuration from '../../utils/time/get-duration';
 // Components
 import Button from '../button/button';

@@ -8,7 +8,7 @@ describe(`<GenreList/>`, () => {
   const props = {
     genres: [`Comedy`],
     currentGenre: null,
-    onGenreChange: () => {}
+    changeGenre: jest.fn()
   };
 
   it(`should render correctly`, () => {

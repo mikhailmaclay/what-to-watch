@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Icon/> should render correctly 1`] = `
+exports[`<Icon/> Should render correctly 1`] = `
 <svg
   height="20"
   viewBox="0 0 20 20"

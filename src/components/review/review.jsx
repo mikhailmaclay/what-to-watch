@@ -3,7 +3,7 @@ import React from 'react';
 // PropTypes
 import propTypes from './review.prop-types';
 // Constants and utils
-import {Config} from '../../consts';
+import {Config} from '../../constants/consts';
 import padEndWithZero from '../../utils/strings/pad-end-with-zero';
 import getDate from '../../utils/time/get-date';
 

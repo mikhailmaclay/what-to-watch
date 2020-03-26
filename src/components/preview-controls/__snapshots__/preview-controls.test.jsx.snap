@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<PreviewControls/> should render correctly 1`] = `
+exports[`<PreviewControls/> Should render correctly 1`] = `
 <button
   onClick={[Function]}
   style={

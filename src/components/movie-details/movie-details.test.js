@@ -13,7 +13,7 @@ describe(`<MovieDetails/>`, () => {
     releaseDate: `March 13, 2014`
   };
 
-  it(`should render correctly`, () => {
+  it(`Should render correctly`, () => {
     const result = renderer.create(
         <MovieDetails {...props}/>
     ).toJSON();

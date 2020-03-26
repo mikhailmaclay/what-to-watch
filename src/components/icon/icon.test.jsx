@@ -11,7 +11,7 @@ describe(`<Icon/>`, () => {
     height: `20`,
   };
 
-  it(`should render correctly`, () => {
+  it(`Should render correctly`, () => {
     const result = renderer.create(
         <Icon {...props}/>
     ).toJSON();

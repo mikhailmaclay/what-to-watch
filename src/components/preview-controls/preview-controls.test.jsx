@@ -10,7 +10,7 @@ describe(`<PreviewControls/>`, () => {
     onToggleMuteButtonClick: () => {}
   };
 
-  it(`should render correctly`, () => {
+  it(`Should render correctly`, () => {
     const result = renderer.create(
         <PreviewControls {...props}/>
     ).toJSON();

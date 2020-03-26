@@ -7,6 +7,7 @@ export default {
     genre: PropTypes.string.isRequired,
     releaseDate: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
-    background: PropTypes.string.isRequired
-  }).isRequired
+    background: PropTypes.arrayOf(PropTypes.string).isRequired
+  }),
+  changeMovieStatus: PropTypes.func.isRequired
 };

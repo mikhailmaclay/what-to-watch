@@ -1,18 +1,18 @@
 // Libraries
 import React from 'react';
-import {Link} from 'react-router-dom';
 // PropTypes
 import propTypes from './movie-promo.prop-types';
 // Constants and utils
-import {Config, PathName} from '../../consts';
+import {Config, PathName} from '../../constants/consts';
 import getDate from '../../utils/time/get-date';
 // Components
 import Header from '../header/header';
 import Button from '../button/button';
 import MoviePoster from '../movie-poster/movie-poster';
 import Icon from '../icon/icon';
+import Link from '../link/link';
 
-function MoviePromo({specialMovie}) {
+function MoviePromo({specialMovie, changeMovieStatus}) {
   if (!specialMovie) { // In case of no movies
     return (
       <>
@@ -23,12 +23,17 @@ function MoviePromo({specialMovie}) {
     );
   }
 
-  const {id, name, genre, releaseDate, poster, background} = specialMovie;
+  const {id, name, genre, releaseDate, poster, background, isInMyList} = specialMovie;
+  const [backgroundColor, backgroundImage] = background;
+
+  const handleMyListButtonClick = () => {
+    changeMovieStatus(id, !isInMyList);
+  };
 
   return (
     <section className="movie-card">
-      <div className="movie-card__bg">
-        <img src={background} alt={name}/>
+      <div className="movie-card__bg" style={{backgroundColor}}>
+        <img src={backgroundImage} alt={name}/>
       </div>
       <h1 className="visually-hidden">WTW</h1>
       <Header/>
@@ -47,10 +52,8 @@ function MoviePromo({specialMovie}) {
                   <Icon name="play-s" width="19" height="19"/>
                   <span>Play</span>
                 </Link>
-                <Button className="btn btn--list movie-card__button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"/>
-                  </svg>
+                <Button className="btn btn--list movie-card__button" onClick={handleMyListButtonClick}>
+                  <Icon name={isInMyList ? `in-list` : `add`} width="20" height="20"/>
                   <span>My list</span>
                 </Button>
               </div>

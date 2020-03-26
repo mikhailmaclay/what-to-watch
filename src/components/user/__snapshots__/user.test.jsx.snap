@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<User/> Should render correctly 1`] = `
+<div
+  className="user-block"
+>
+  <div
+    className="user-block__avatar"
+  >
+    <img
+      alt="Shia LaBeouf"
+      height="63"
+      src=""
+      width="63"
+    />
+  </div>
+</div>
+`;

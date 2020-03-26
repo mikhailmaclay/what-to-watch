@@ -9,6 +9,8 @@ exports[`<Header/> should render correctly 1`] = `
   >
     <a
       className="logo__link "
+      href={null}
+      onClick={null}
     >
       <span
         className="logo__letter logo__letter--1"
@@ -34,9 +36,9 @@ exports[`<Header/> should render correctly 1`] = `
       className="user-block__avatar"
     >
       <img
-        alt="User avatar"
+        alt="John Doe"
         height="63"
-        src="/img/avatar.jpg"
+        src=""
         width="63"
       />
     </div>

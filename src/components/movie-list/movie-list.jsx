@@ -3,18 +3,18 @@ import React from 'react';
 // PropTypes
 import propTypes from './movie-list.prop-types';
 // Constants and utils
-import {Config} from '../../consts';
+import {Config} from '../../constants/consts';
 import createHOC from '../../utils/components/create-hoc';
 // Components
 import MovieCardWrapped from '../movie-card/movie-card';
 import Button from '../button/button';
 
-function MovieList({movies, /* withCounter: */ isWithRenderedMovieCardsCounter, withCounter}) {
+function MovieList({movies, /* withCounter: */ withCounter}) {
   const renderMovieCards = (count) => (
     movies.slice(0, count).map((movie) => <MovieCardWrapped key={movie.id} {...movie}/>)
   );
 
-  if (!isWithRenderedMovieCardsCounter) { // if not a withCounter HOC
+  if (!withCounter) { // if not a withCounter HOC
     return (
       <div className="catalog__movie-list">
         {renderMovieCards(Config.MOVIE_CARDS_COUNT_AT_START)}

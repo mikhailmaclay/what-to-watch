@@ -3,7 +3,7 @@ import React from 'react';
 // Styles
 import styles from './with-preview-on-hover.styles';
 // Constants and utils
-import {Config} from '../../consts';
+import {Config} from '../../constants/consts';
 import bind from '../../utils/components/bind';
 // Components
 import VideoWrapped from '../../components/video/video';

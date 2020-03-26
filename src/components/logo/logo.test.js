@@ -5,7 +5,7 @@ import renderer from 'react-test-renderer';
 import Logo from './logo';
 
 describe(`<Logo/>`, () => {
-  it(`should render correctly`, () => {
+  it(`Should render correctly`, () => {
     const result = renderer.create(
         <Logo/>
     ).toJSON();

@@ -2,24 +2,31 @@
 import React from 'react';
 // PropTypes
 import propTypes from './main.prop-types';
+// Containers
+import GenreListContainer from '../../containers/genre-list/genre-list';
+import MoviePromoContainer from '../../containers/movie-promo/movie-promo';
 // Components
 import MovieListWrapped from '../movie-list/movie-list';
 import Footer from '../footer/footer';
-import GenreList from '../genre-list/genre-list';
-import MoviePromo from '../movie-promo/movie-promo';
 
-function Main({specialMovie, genres, movies, currentGenre, onGenreChange}) {
+function Main({movies}) {
+  const renderMovies = () => {
+    // eslint-disable-next-line react/prop-types
+    if (!movies.length) {
+      return `Sorry, there is no movies.`;
+    }
+
+    return <MovieListWrapped movies={movies}/>;
+  };
+
   return (
     <>
-      <MoviePromo specialMovie={specialMovie}/>
+      <MoviePromoContainer/>
       <div className="page-content">
         <section className="catalog">
           <h2 className="visually-hidden">Catalog</h2>
-          <GenreList genres={genres} currentGenre={currentGenre} onGenreChange={onGenreChange}/>
-          {movies.length ?
-            <MovieListWrapped movies={movies}/>
-            : `Sorry, there is no matching results.`
-          }
+          <GenreListContainer/>
+          {renderMovies()}
         </section>
         <Footer/>
       </div>

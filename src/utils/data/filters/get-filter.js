@@ -1,4 +1,4 @@
-import {FilterName} from '../../../consts';
+import {FilterName} from '../../../constants/consts';
 
 function getFilter(filterName, query) {
   if (!query) {

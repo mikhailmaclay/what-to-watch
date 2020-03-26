@@ -3,7 +3,7 @@ import React from 'react';
 // PropTypes
 import propTypes from './movie-details.prop-types';
 // Constants and utils
-import {Config} from '../../consts';
+import {Config} from '../../constants/consts';
 import getDate from '../../utils/time/get-date';
 import getDuration from '../../utils/time/get-duration';
 import pluralize from '../../utils/numbers/pluralize';

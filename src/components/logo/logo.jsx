@@ -3,7 +3,7 @@ import React from 'react';
 // PropTypes
 import propTypes from './logo.prop-types';
 // Constants and utils
-import {PathName} from '../../consts';
+import {PathName} from '../../constants/consts';
 // Components
 import Link from '../link/link';
 

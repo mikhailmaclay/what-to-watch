@@ -1,35 +1,35 @@
 // Libraries
 import React from 'react';
-import {PathName} from '../../consts';
-import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
-// PropTypes
-import propTypes from './app.prop-types';
+import {PathName} from '../../constants/consts';
+import {Router, Switch, Route, Redirect} from 'react-router-dom';
 // Components
-import MainContainer from '../../containers/main';
+import MainContainer from '../../containers/main/main';
 import MoviePageContainerWrapped from '../../containers/movie-page/movie-page';
-import VideoPlayerContainerWrapped from '../../containers/watch-page/watch-page';
+import WatchPageContainerWrapped from '../../containers/watch-page/watch-page';
+//
+import history from '../../history';
 
-function App({movies}) {
+function App() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path={PathName.ROOT} exact>
-          <MainContainer movies={movies}/>
-        </Route>
-        <Route path={`${PathName.MOVIE_PAGE}:id`}>
-          <MoviePageContainerWrapped movies={movies}/>
-        </Route>
-        <Route path={`${PathName.WATCH}:id`} exact>
-          <VideoPlayerContainerWrapped movies={movies} isAutoPlay isLooped/>
-        </Route>
-        <Route>
-          <Redirect to={PathName.ROOT}/>
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    <>
+      <Router history={history}>
+        <Switch>
+          <Route path={PathName.ROOT} exact>
+            <MainContainer/>
+          </Route>
+          <Route path={`${PathName.MOVIE_PAGE}:id`}>
+            <MoviePageContainerWrapped/>
+          </Route>
+          <Route path={`${PathName.WATCH}:id`} exact>
+            <WatchPageContainerWrapped isAutoPlay isLooped/>
+          </Route>
+          <Route>
+            <Redirect to={PathName.ROOT}/>
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
-
-App.propTypes = propTypes;
 
 export default React.memo(App);

@@ -7,8 +7,8 @@ import WatchPage from './watch-page';
 describe(`<WatchPage/>`, () => {
   const props = {
     id: 1,
-    name: ``,
-    background: ``,
+    name: `Hello World`,
+    background: [`black`, ``],
     onClose: () => {}
   };
 

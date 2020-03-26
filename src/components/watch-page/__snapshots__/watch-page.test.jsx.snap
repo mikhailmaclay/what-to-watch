@@ -22,7 +22,7 @@ exports[`<WatchPage/> should render correctly 1`] = `
   >
     <video
       height="100%"
-      name=""
+      name="Hello World"
       onCanPlayThrough={[Function]}
       onClick={[Function]}
       onContextMenu={[Function]}
@@ -83,7 +83,7 @@ exports[`<WatchPage/> should render correctly 1`] = `
         <div
           className="player__name"
         >
-          
+          Hello World
         </div>
       </div>
     </div>

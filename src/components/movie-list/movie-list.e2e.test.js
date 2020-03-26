@@ -3,7 +3,7 @@ import React from 'react';
 import {configure, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 // Constants and utils
-import {Config} from '../../consts';
+import {Config} from '../../constants/consts';
 // Components
 import {MovieList} from './movie-list';
 

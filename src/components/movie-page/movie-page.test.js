@@ -1,55 +1,73 @@
 // Libraries
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {BrowserRouter} from 'react-router-dom';
+import configureStore from 'redux-mock-store';
+import {Provider} from 'react-redux';
+import {Router} from 'react-router-dom';
 // Components
 import MoviePage from './movie-page';
+//
+import history from '../../history';
+import {PathName} from '../../constants/consts';
 
-const movies = [
-  {
-    id: 1,
-    name: `The Grand Budapest Hotel`,
-    genre: `Drama`,
-    releaseDate: `2014`,
-    description: [
-      `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
-      `Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`
-    ],
-    runTime: 80,
-    team: [
-      {fullName: `Wes Anderson`, role: `Director`},
-      {fullName: `Bill Murray`, role: `Actor`},
-      {fullName: `Edward Norton`, role: `Actor`},
-      {fullName: `Jude Law`, role: `Actor`},
-      {fullName: `Willem Dafoe`, role: `Actor`},
-      {fullName: `Adrien Brody`, role: `Actor`}
-    ],
-    reviews: [
-      {
-        id: {id: 1, fullName: `Shia LaBeouf`},
-        user: 1,
-        rating: 5,
-        date: `November 18, 2020 03:24:00`,
-        text: `DO! IT!`
-      }
-    ],
-    poster: `/img/the-grand-budapest-hotel-poster.jpg`,
-    background: `/img/bg-the-grand-budapest-hotel.jpg`,
-  }
-];
+const FIRST_MOVIE_INDEX = 0;
+
+const mockStore = configureStore([]);
+
+const movie = {
+  id: 1,
+  name: `Shutter Island`,
+  genre: `Thriller`,
+  releaseDate: `2010`,
+  description: [
+    `In 1954, a U.S. Marshal investigates the disappearance of a murderer, who escaped from a hospital for the criminally insane.`
+  ],
+  runTime: 138,
+  directors: [
+    `Martin Scorsese`
+  ],
+  actors: [
+    `Leonardo DiCaprio`,
+    `Emily Mortimer`,
+    `Mark Ruffalo`
+  ],
+  poster: `https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Shutter_Island.jpg`,
+  images: [
+    `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/shutter-island.jpg`
+  ],
+  background: [
+    `#977461`,
+    `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/Shutter_Island.jpg`
+  ],
+  rating: 4.1,
+  scoresCount: 1002557,
+  level: `Not bad, not bad...`,
+  preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  video: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
+  isInMyList: false,
+  similarMovies: []
+};
 
 describe(`<MoviePage/>`, () => {
+  const store = mockStore({
+    movies: [
+      movie
+    ]
+  });
+
   const props = {
-    movies,
-    history: {push: () => {}}, // withRouter
-    baseUrl: ``,
+    movie: store.getState().movies[FIRST_MOVIE_INDEX],
+    baseURL: PathName.MOVIE_PAGE + store.getState().movies[FIRST_MOVIE_INDEX].id,
+    changeMovieStatus: () => {}
   };
 
-  it(`should render correctly`, () => {
+  it(`Should render correctly`, () => {
     const result = renderer.create(
-        <BrowserRouter>
-          <MoviePage {...props}/>
-        </BrowserRouter>
+        <Provider store={store}>
+          <Router history={history}>
+            <MoviePage {...props}/>
+          </Router>
+        </Provider>
     ).toJSON();
 
     expect(result).toMatchSnapshot();

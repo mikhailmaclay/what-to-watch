@@ -1,16 +1,23 @@
 // Libraries
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {BrowserRouter} from 'react-router-dom';
+import configureStore from 'redux-mock-store';
+import {Provider} from 'react-redux';
 // Components
 import Header from './header';
 
+const mockStore = configureStore([]);
+
 describe(`<Header/>`, () => {
+  const store = mockStore({
+    user: {id: 1, email: `johndoe@gmail.com`, name: `John Doe`, avatar: ``},
+  });
+
   it(`should render correctly`, () => {
     const result = renderer.create(
-        <BrowserRouter>
+        <Provider store={store}>
           <Header/>
-        </BrowserRouter>
+        </Provider>
     ).toJSON();
 
     expect(result).toMatchSnapshot();

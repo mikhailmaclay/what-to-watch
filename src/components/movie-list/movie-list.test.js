@@ -1,7 +1,6 @@
 // Libraries
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {BrowserRouter} from 'react-router-dom';
 // Components
 import {MovieList} from './movie-list';
 
@@ -18,11 +17,9 @@ describe(`<MovieList/>`, () => {
     movies
   };
 
-  it(`should render correctly`, () => {
+  it(`Should render correctly`, () => {
     const result = renderer.create(
-        <BrowserRouter>
-          <MovieList {...props}/>
-        </BrowserRouter>
+        <MovieList {...props}/>
     ).toJSON();
 
     expect(result).toMatchSnapshot();

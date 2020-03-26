@@ -1,7 +1,6 @@
 // Libraries
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {BrowserRouter} from 'react-router-dom';
 // Components
 import Link from './link';
 
@@ -12,9 +11,7 @@ describe(`<Link/>`, () => {
 
   it(`should render correctly`, () => {
     const result = renderer.create(
-        <BrowserRouter>
-          <Link {...props}/>
-        </BrowserRouter>
+        <Link {...props}/>
     ).toJSON();
 
     expect(result).toMatchSnapshot();

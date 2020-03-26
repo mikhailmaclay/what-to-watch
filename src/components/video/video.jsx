@@ -5,7 +5,7 @@ import propTypes from './video.prop-types';
 // Styles
 import styles from './video.styles';
 // Constants and utils
-import {Config, KeyCode} from '../../consts';
+import {Config, KeyCode} from '../../constants/consts';
 import bind from '../../utils/components/bind';
 import getDuration from '../../utils/time/get-duration';
 import reduceToPercents from '../../utils/numbers/reduce-to-percents';
