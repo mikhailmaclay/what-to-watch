@@ -1,5 +1,9 @@
 import ActionCreator from '../../actions/action-creator';
 import specialMovie from './special-movie';
+import movie from '../movie/movie';
+import extend from '../../../utils/objects/extend';
+
+const FIRST_MOVIE_ID = 1;
 
 const mockSpecialMovie = {
   id: 1,
@@ -47,5 +51,9 @@ const mockSpecialMovie = {
 describe(`specialMovie`, () => {
   it(`On LOAD_SPECIAL_MOVIE should work correctly`, () => {
     expect(specialMovie(null, ActionCreator.loadSpecialMovie(mockSpecialMovie))).toEqual(mockSpecialMovie);
+  });
+
+  it(`On CHANGE_MOVIE_STATUS should work correctly`, () => {
+    expect(movie(mockSpecialMovie, ActionCreator.changeMovieStatus(FIRST_MOVIE_ID, true))).toEqual(extend(mockSpecialMovie, {isInMyList: true}));
   });
 });

@@ -75,4 +75,10 @@ describe(`movies`, () => {
 
     expect(movies(mockMovies, ActionCreator.loadReviews(FIRST_MOVIE_ID, mockReviews))).toEqual([movieWithReview]);
   });
+
+  it(`On CHANGE_MOVIE_STATUS should work correctly`, () => {
+    const movieWithNewStatus = extend(mockMovie, {isInMyList: true});
+
+    expect(movies(mockMovies, ActionCreator.changeMovieStatus(FIRST_MOVIE_ID, true))).toEqual([movieWithNewStatus]);
+  });
 });

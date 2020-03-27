@@ -11,6 +11,9 @@ function movies(state = null, action) {
     case ActionType.LOAD_REVIEWS:
       return state.map((movieState) => movie(movieState, action));
 
+    case ActionType.CHANGE_MOVIE_STATUS:
+      return state.map((movieState) => movie(movieState, action));
+
     default:
       return state;
   }

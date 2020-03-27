@@ -12,6 +12,13 @@ function movie(state = {}, action) {
 
       return extend(state, {reviews: payload.reviews});
 
+    case ActionType.CHANGE_MOVIE_STATUS:
+      if (state.id !== payload.id) {
+        return state;
+      }
+
+      return extend(state, {isInMyList: payload.isInMyList});
+
     default:
       return state;
   }

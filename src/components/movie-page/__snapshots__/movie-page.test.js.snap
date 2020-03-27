@@ -54,6 +54,17 @@ Array [
             </span>
           </a>
         </div>
+        <div
+          className="user-block"
+        >
+          <a
+            className="user-block__link"
+            href="/sign-in"
+            onClick={[Function]}
+          >
+            Sign in
+          </a>
+        </div>
       </header>
       <div
         className="movie-card__wrap"

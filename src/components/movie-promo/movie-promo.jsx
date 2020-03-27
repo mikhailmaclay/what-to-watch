@@ -27,7 +27,7 @@ function MoviePromo({specialMovie, changeMovieStatus}) {
   const [backgroundColor, backgroundImage] = background;
 
   const handleMyListButtonClick = () => {
-    changeMovieStatus(id, !isInMyList);
+    changeMovieStatus(id, Number(!isInMyList));
   };
 
   return (
@@ -36,7 +36,7 @@ function MoviePromo({specialMovie, changeMovieStatus}) {
         <img src={backgroundImage} alt={name}/>
       </div>
       <h1 className="visually-hidden">WTW</h1>
-      <Header/>
+      <Header className="page-header movie-card__head"/>
       {!!specialMovie &&
         <div className="movie-card__wrap">
           <div className="movie-card__info">

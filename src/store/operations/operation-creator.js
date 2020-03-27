@@ -1,8 +1,12 @@
+// Constants and utils
+import {PathName} from '../../constants/consts';
+//
 import ActionCreator from '../actions/action-creator';
 import adaptMovie from '../../utils/data/adapters/adapt-movie';
 import adaptReview from '../../utils/data/adapters/adapt-review';
 import adaptUser from '../../utils/data/adapters/adapt-user';
 import selectGenres from '../../utils/data/selectors/select-genres';
+import history from '../../history';
 
 const OperationCreator = {
   loadMovies: () => (dispatch, getState, api) => api.get(`/films`)
@@ -20,15 +24,32 @@ const OperationCreator = {
       dispatch(ActionCreator.loadSpecialMovie(movie));
     }),
   loadMyList: () => (dispatch, _, api) => api.get(`/favorite`)
-    .then(({data}) => dispatch(ActionCreator.loadMyList(data))),
+    .then(({data}) => {
+      const movies = data.map(adaptMovie);
+
+      dispatch(ActionCreator.loadMyList(movies));
+    }),
   loadReviews: (movieID) => (dispatch, _, api) => api.get(`/comments/${movieID}`)
     .then(({data}) => {
       const reviews = data.map(adaptReview);
 
       dispatch(ActionCreator.loadReviews(movieID, reviews));
     }),
-  changeMovieStatus: (movieID, status) => (dispatch, _, api) => api.post(`/favorite/${movieID}/${status}`)
-    .then(({data}) => dispatch(ActionCreator.changeMovieStatus(data))),
+  changeMovieStatus: (movieID, status) => (dispatch, getState, api) => {
+    const hasUser = Boolean(getState().user);
+
+    if (!hasUser) {
+      history.push(PathName.SIGN_IN);
+    }
+
+    return api.post(`/favorite/${movieID}/${status}`)
+      .then(({data}) => {
+        const movie = adaptMovie(data);
+        const {isInMyList} = movie;
+
+        dispatch(ActionCreator.changeMovieStatus(movieID, isInMyList));
+      });
+  },
   addReview: (movieID, review) => (dispatch, _, api) => api.post(`/comments/${movieID}`, review)
     .then(({data}) => dispatch(ActionCreator.addReview(data))),
   login: (email, password) => (dispatch, _, api) => api.post(`/login`, {email, password})
@@ -36,6 +57,8 @@ const OperationCreator = {
       const user = adaptUser(data);
 
       dispatch(ActionCreator.authorize(user));
+
+      history.goBack();
     }),
   checkAuthorization: () => (dispatch, _, api) => api.get(`/login`)
     .then(({data}) => {

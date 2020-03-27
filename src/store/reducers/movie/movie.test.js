@@ -66,4 +66,8 @@ describe(`movie`, () => {
   it(`On LOAD_REVIEWS should work correctly`, () => {
     expect(movie(mockMovie, ActionCreator.loadReviews(FIRST_MOVIE_ID, mockReviews))).toEqual(extend(mockMovie, {reviews: mockReviews}));
   });
+
+  it(`On CHANGE_MOVIE_STATUS should work correctly`, () => {
+    expect(movie(mockMovie, ActionCreator.changeMovieStatus(FIRST_MOVIE_ID, true))).toEqual(extend(mockMovie, {isInMyList: true}));
+  });
 });

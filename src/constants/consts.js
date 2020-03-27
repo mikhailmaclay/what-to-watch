@@ -33,11 +33,12 @@ export const Config = {
 export const NO_SPECIAL_MOVIE = -1;
 
 export const PathName = {
-  SERVER: `https://htmlacademy-react-3.appspot.com`,
   ROOT: `/`,
   MOVIE_FILTER: `/films`,
   MOVIE_PAGE: `/films/`,
-  WATCH: `/watch/`
+  WATCH: `/watch/`,
+  SIGN_IN: `/sign-in`,
+  SERVER: `https://htmlacademy-react-3.appspot.com`
 };
 
 export const FilterName = {

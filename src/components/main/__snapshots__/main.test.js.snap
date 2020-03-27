@@ -10,9 +10,7 @@ Array [
   >
     WTW
   </h1>,
-  <header
-    className="page-header movie-card__head"
-  >
+  <header>
     <div
       className="logo"
     >
@@ -36,6 +34,17 @@ Array [
         >
           W
         </span>
+      </a>
+    </div>
+    <div
+      className="user-block"
+    >
+      <a
+        className="user-block__link"
+        href="/sign-in"
+        onClick={[Function]}
+      >
+        Sign in
       </a>
     </div>
   </header>,

@@ -1,16 +1,30 @@
 // Libraries
 import MockAdapter from 'axios-mock-adapter';
+import configureStore from 'redux-mock-store';
 // Constants and utils
 import adaptMovie from '../../utils/data/adapters/adapt-movie';
+import adaptReview from '../../utils/data/adapters/adapt-review';
+import extend from '../../utils/objects/extend';
+import adaptUser from '../../utils/data/adapters/adapt-user';
 //
 import {createAPI} from '../../api';
 import OperationCreator from './operation-creator';
 import ActionType from '../action-type';
-import adaptReview from '../../utils/data/adapters/adapt-review';
 
 const FIRST_MOVIE_ID = 1;
+const IN_MY_LIST_MOVIE_STATUS = 1;
 
+const mockStore = configureStore([]);
 const api = createAPI();
+
+const mockUser = {
+  id: 1,
+  email: `Oliver.conner@gmail.com`,
+  name: `Oliver.conner`,
+  [`avatar_url`]: `img/1.png`,
+  myList: null
+};
+
 
 const mockMovie = {
   id: 1,
@@ -81,7 +95,21 @@ describe(`Operations`, () => {
   });
 
   it(`loadMyList should make a correct API call to /favorite`, () => {
+    const mockAPI = new MockAdapter(api);
+    mockAPI
+      .onGet(`/favorite`)
+      .reply(200, [mockMovie]);
+    const dispatch = jest.fn();
+    const loadMyListOperation = OperationCreator.loadMyList();
 
+    return loadMyListOperation(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.LOAD_MY_LIST,
+          payload: [adaptMovie(mockMovie)],
+        });
+      });
   });
 
   it(`loadReviews should make a correct API call to /comments/:movieID`, () => {
@@ -103,18 +131,63 @@ describe(`Operations`, () => {
   });
 
   it(`changeMovieStatus should make a correct API call to /favorite/:movieID/:status`, () => {
+    const store = mockStore({
+      user: adaptUser(mockUser)
+    });
+    const mockAPI = new MockAdapter(api);
+    mockAPI
+      .onPost(`/favorite/${FIRST_MOVIE_ID}/${IN_MY_LIST_MOVIE_STATUS}`)
+      .reply(200, extend(mockMovie, {[`is_favorite`]: true}));
+    const dispatch = jest.fn();
+    const changeMovieStatusOperation = OperationCreator.changeMovieStatus(FIRST_MOVIE_ID, IN_MY_LIST_MOVIE_STATUS);
 
+    return changeMovieStatusOperation(dispatch, store.getState, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.CHANGE_MOVIE_STATUS,
+          payload: {id: FIRST_MOVIE_ID, isInMyList: true},
+        });
+      });
   });
 
   it(`addReview should make a correct API call to /comments/:movieID`, () => {
-
+    // TODO
   });
 
   it(`login should make a correct API call to /login`, () => {
+    const mockAPI = new MockAdapter(api);
+    mockAPI
+      .onPost(`/login`)
+      .reply(200, mockUser);
+    const dispatch = jest.fn();
+    const loadReviewsOperation = OperationCreator.login(`Oliver.conner@gmail.com`, ``);
 
+    return loadReviewsOperation(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.AUTHORIZE,
+          payload: adaptUser(mockUser),
+        });
+      });
   });
 
   it(`checkAuthorization should make a correct API call to /login`, () => {
+    const mockAPI = new MockAdapter(api);
+    mockAPI
+      .onGet(`/login`)
+      .reply(200, mockUser);
+    const dispatch = jest.fn();
+    const loadReviewsOperation = OperationCreator.checkAuthorization();
 
+    return loadReviewsOperation(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.AUTHORIZE,
+          payload: adaptUser(mockUser),
+        });
+      });
   });
 });

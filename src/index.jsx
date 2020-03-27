@@ -20,7 +20,11 @@ function handleServerUnavailable() {
   store.dispatch(ActionCreator.showNotification(`Server is unavailable`, `Sorry, but the server is not available.`));
 }
 
-const api = createAPI(handleNoResponse, undefined, undefined, handleServerUnavailable);
+function handleBadRequest() {
+  store.dispatch(ActionCreator.showNotification(`Bad request`, `Sorry, but the server can\'t recognize this request.`));
+}
+
+const api = createAPI(handleNoResponse, undefined, handleBadRequest, handleServerUnavailable);
 
 const store = applyMiddleware(thunk.withExtraArgument(api))(createStore)(
     combinedReducer,

@@ -4,12 +4,12 @@ import axios from 'axios';
 import {Config} from './constants/consts';
 
 const Error = {
-  BAD_AUTHORIZATION_REQUEST: 400,
+  BAD_REQUEST: 400,
   UNAUTHORIZED: 401,
   SERVER_UNAVAILABLE: 503
 };
 
-export const createAPI = (onNoResponse = () => {}, onUnauthorized = () => {}, onBadAuthorizationRequest = () => {}, onServerUnavailable = () => {}) => {
+export const createAPI = (onNoResponse = () => {}, onUnauthorized = () => {}, onBadRequest = () => {}, onServerUnavailable = () => {}) => {
   const api = axios.create({
     baseURL: `https://htmlacademy-react-3.appspot.com/wtw`,
     timeout: Config.REQUEST_TIMEOUT,
@@ -35,8 +35,8 @@ export const createAPI = (onNoResponse = () => {}, onUnauthorized = () => {}, on
 
         throw error;
 
-      case Error.BAD_AUTHORIZATION_REQUEST:
-        onBadAuthorizationRequest();
+      case Error.BAD_REQUEST:
+        onBadRequest();
 
         throw error;
 

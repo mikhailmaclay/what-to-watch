@@ -4,9 +4,12 @@ import {connect} from 'react-redux';
 // PropTypes
 import propTypes from './notification.prop-types';
 // Constants and utils
-import {Config} from '../../constants/consts';
+import {Config, PathName} from '../../constants/consts';
 import Notification from '../../components/notification/notification';
 import ActionCreator from '../../store/actions/action-creator';
+//
+import history from '../../history';
+
 
 class NotificationContainer extends React.PureComponent {
   constructor(props) {
@@ -39,8 +42,9 @@ class NotificationContainer extends React.PureComponent {
 
   render() {
     const {notification} = this.props;
+    const isSignInPage = history.location.pathname === PathName.SIGN_IN;
 
-    if (!notification) {
+    if (!notification || isSignInPage) {
       return null;
     }
 

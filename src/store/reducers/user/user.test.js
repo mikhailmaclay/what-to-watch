@@ -5,7 +5,8 @@ const mockUser = {
   id: 1,
   email: `Oliver.conner@gmail.com`,
   name: `Oliver.conner`,
-  avatar: `img/1.png`
+  avatar: `img/1.png`,
+  myList: null
 };
 
 describe(`user`, () => {

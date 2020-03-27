@@ -53,16 +53,13 @@ exports[`<MoviePromo/> should render correctly 1`] = `
     <div
       className="user-block"
     >
-      <div
-        className="user-block__avatar"
+      <a
+        className="user-block__link"
+        href="/sign-in"
+        onClick={[Function]}
       >
-        <img
-          alt="John Doe"
-          height="63"
-          src=""
-          width="63"
-        />
-      </div>
+        Sign in
+      </a>
     </div>
   </header>
   <div

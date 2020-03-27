@@ -5,7 +5,8 @@ function adaptUser(userDataItem) {
     id: userDataItem.id,
     email: userDataItem.email,
     name: userDataItem.name,
-    avatar: PathName.SERVER + userDataItem[`avatar_url`]
+    avatar: PathName.SERVER + userDataItem[`avatar_url`],
+    myList: null
   };
 }
 

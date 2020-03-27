@@ -16,7 +16,7 @@ function MovieHeader({id, name, background, genre, releaseDate, isInMyList, chan
   const [backgroundColor, backgroundImage] = background;
 
   const handleMyListButtonClick = () => {
-    changeMovieStatus(id, !isInMyList);
+    changeMovieStatus(id, Number(!isInMyList));
   };
 
   return (
@@ -25,7 +25,7 @@ function MovieHeader({id, name, background, genre, releaseDate, isInMyList, chan
         <img src={backgroundImage} alt={name}/>
       </div>
       <h1 className="visually-hidden">WTW</h1>
-      <Header/>
+      <Header className="page-header movie-card__head"/>
       <div className="movie-card__wrap">
         <div className="movie-card__desc">
           <h2 className="movie-card__title">{name}</h2>
@@ -39,7 +39,7 @@ function MovieHeader({id, name, background, genre, releaseDate, isInMyList, chan
               <span>Play</span>
             </Link>
             <Button className="btn btn--list movie-card__button" onClick={handleMyListButtonClick}>
-              <Icon name="add" width="19" height="20"/>
+              <Icon name={isInMyList ? `in-list` : `add`} width="19" height="20"/>
               <span>My list</span>
             </Button>
             <Link to={PathName.MOVIE_PAGE + id + `/review`} className="btn movie-card__button">Add review</Link>
