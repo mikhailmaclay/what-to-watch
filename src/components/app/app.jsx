@@ -9,6 +9,7 @@ import AddReviewPageContainerWrapped from '../../containers/add-review-page/add-
 import MainContainer from '../../containers/main/main';
 import SignInPageContainer from '../../containers/sign-in-page/sign-in-page';
 import PrivateRouteContainer from '../../containers/private-route/private-route';
+import MyListPageContainer from '../../containers/my-list-page/my-list-page';
 //
 import history from '../../history';
 
@@ -21,16 +22,16 @@ function App() {
             <MainContainer/>
           </Route>
           <PrivateRouteContainer path={PathName.MY_LIST}>
-            TODO
+            <MyListPageContainer/>
           </PrivateRouteContainer>
           <PrivateRouteContainer path={`${PathName.MOVIE_PAGE}:id/review`} exact>
             <AddReviewPageContainerWrapped/>
           </PrivateRouteContainer>
+          <Route path={`${PathName.MOVIE_PAGE}:id/player`} exact>
+            <WatchPageContainerWrapped isAutoPlay isLooped/>
+          </Route>
           <Route path={`${PathName.MOVIE_PAGE}:id`}>
             <MoviePageContainerWrapped/>
-          </Route>
-          <Route path={`${PathName.WATCH}:id`} exact>
-            <WatchPageContainerWrapped isAutoPlay isLooped/>
           </Route>
           <Route path={PathName.SIGN_IN} exact>
             <SignInPageContainer/>

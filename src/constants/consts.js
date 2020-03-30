@@ -38,8 +38,7 @@ export const PathName = {
   ROOT: `/`,
   MOVIE_FILTER: `/films`,
   MOVIE_PAGE: `/films/`,
-  WATCH: `/watch/`,
-  SIGN_IN: `/sign-in`,
+  SIGN_IN: `/login`,
   MY_LIST: `/my-list`,
   SERVER: `https://htmlacademy-react-3.appspot.com`
 };

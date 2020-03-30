@@ -55,7 +55,7 @@ exports[`<MoviePromo/> should render correctly 1`] = `
     >
       <a
         className="user-block__link"
-        href="/sign-in"
+        href="/login"
         onClick={[Function]}
       >
         Sign in
@@ -110,7 +110,7 @@ exports[`<MoviePromo/> should render correctly 1`] = `
         >
           <a
             className="btn btn--play movie-card__button"
-            href="/watch/1"
+            href="/films/1/player"
             onClick={[Function]}
           >
             <svg

@@ -42,7 +42,7 @@ exports[`<SignInPage/> Should render correctly 1`] = `
     >
       <a
         className="user-block__link"
-        href="/sign-in"
+        href="/login"
         onClick={[Function]}
       >
         Sign in

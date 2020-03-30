@@ -48,7 +48,7 @@ function MoviePromo({specialMovie, changeMovieStatus}) {
                 <span className="movie-card__year">{getDate(Config.MOVIE_PROMO_RELEASE_DATE_FORMAT)(releaseDate)}</span>
               </p>
               <div className="movie-card__buttons">
-                <Link to={PathName.WATCH + id} className="btn btn--play movie-card__button">
+                <Link to={PathName.MOVIE_PAGE + id + `/player`} className="btn btn--play movie-card__button">
                   <Icon name="play-s" width="19" height="19"/>
                   <span>Play</span>
                 </Link>

@@ -19,7 +19,7 @@ function User({name, avatar}) {
           </Link>
         </div>
         :
-        <Link to="/sign-in" className="user-block__link">Sign in</Link>
+        <Link to={PathName.SIGN_IN} className="user-block__link">Sign in</Link>
       }
     </div>
   );
