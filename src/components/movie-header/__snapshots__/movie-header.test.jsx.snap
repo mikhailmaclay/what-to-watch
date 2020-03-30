@@ -126,13 +126,6 @@ exports[`<MovieHeader/> Should render correctly 1`] = `
             My list
           </span>
         </button>
-        <a
-          className="btn movie-card__button"
-          href="/films/1/review"
-          onClick={[Function]}
-        >
-          Add review
-        </a>
       </div>
     </div>
   </div>

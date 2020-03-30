@@ -18,7 +18,7 @@ import OperationCreator from '../../store/operations/operation-creator';
 
 const BEGINNING_OF_AN_ARRAY = 0;
 
-function MoviePageContainer({movies, changeMovieStatus, /* withRouter: */ match}) {
+function MoviePageContainer({movies, changeMovieStatus, isAuthorized, /* withRouter: */ match}) {
   const movieID = parseInt(match.params.id, 10);
   const movie = selectMovieByID(movieID)(movies);
 
@@ -46,6 +46,7 @@ function MoviePageContainer({movies, changeMovieStatus, /* withRouter: */ match}
 
   const propsToComponent = {
     changeMovieStatus,
+    isAuthorized,
     movie: tempMovie,
     baseURL: PathName.MOVIE_PAGE + movieID
   };
@@ -55,7 +56,10 @@ function MoviePageContainer({movies, changeMovieStatus, /* withRouter: */ match}
 
 MoviePageContainer.propTypes = propTypes;
 
-const mapStateToProps = ({movies}) => ({movies});
+const mapStateToProps = ({movies, user}) => ({
+  movies,
+  isAuthorized: Boolean(user)
+});
 
 const mapDispatchToProps = (dispatch) =>({
   changeMovieStatus: (movieID, status) => {

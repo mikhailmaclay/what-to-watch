@@ -7,5 +7,6 @@ export default {
     name: PropTypes.string.isRequired,
     avatar: PropTypes.string.isRequired,
     isInMyList: PropTypes.bool
-  })
+  }),
+  isFetching: PropTypes.bool.isRequired
 };

@@ -15,7 +15,26 @@ class SignInPage extends React.PureComponent {
     this.emailRef = React.createRef();
     this.passwordRef = React.createRef();
 
-    bind(this, this.handleSubmit);
+    bind(this,
+        this.prepareForm,
+        this.handleSubmit
+    );
+  }
+
+  componentDidMount() {
+    this.prepareForm();
+  }
+
+  componentDidUpdate() {
+    this.prepareForm();
+  }
+
+  prepareForm() {
+    const {isFetching} = this.props;
+
+    Array.from([this.emailRef.current, this.passwordRef.current]).forEach((element) => {
+      element.disabled = isFetching;
+    });
   }
 
   handleSubmit(evt) {

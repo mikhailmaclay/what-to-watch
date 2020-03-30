@@ -20,7 +20,7 @@ import Link from '../link/link';
 
 const ACTIVE_MENU_ITEM_CLASS_NAME = `movie-nav__item--active`;
 
-function MoviePage({movie, baseURL, changeMovieStatus}) {
+function MoviePage({movie, baseURL, isAuthorized, changeMovieStatus}) {
   const {id, name, genre, releaseDate, description, runTime, directors, actors, rating, scoresCount, level, poster, background, similarMovies, isInMyList} = movie;
 
   const detailsPathname = `${baseURL}/details`;
@@ -45,7 +45,7 @@ function MoviePage({movie, baseURL, changeMovieStatus}) {
   return (
     <>
       <section className="movie-card movie-card--full">
-        <MovieHeader id={id} name={name} releaseDate={releaseDate} genre={genre} background={background} changeMovieStatus={changeMovieStatus} isInMyList={isInMyList}/>
+        <MovieHeader id={id} name={name} releaseDate={releaseDate} genre={genre} background={background} changeMovieStatus={changeMovieStatus} isInMyList={isInMyList} isAuthorized={isAuthorized}/>
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <MoviePoster className="movie-card__poster movie-card__poster--big" src={poster} alt={name}/>

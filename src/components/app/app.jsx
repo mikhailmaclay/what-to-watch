@@ -5,8 +5,10 @@ import {Router, Switch, Route, Redirect} from 'react-router-dom';
 // Components
 import MoviePageContainerWrapped from '../../containers/movie-page/movie-page';
 import WatchPageContainerWrapped from '../../containers/watch-page/watch-page';
+import AddReviewPageContainerWrapped from '../../containers/add-review-page/add-review-page';
 import MainContainer from '../../containers/main/main';
 import SignInPageContainer from '../../containers/sign-in-page/sign-in-page';
+import PrivateRouteContainer from '../../containers/private-route/private-route';
 //
 import history from '../../history';
 
@@ -18,6 +20,9 @@ function App() {
           <Route path={PathName.ROOT} exact>
             <MainContainer/>
           </Route>
+          <PrivateRouteContainer path={`${PathName.MOVIE_PAGE}:id/review`} exact>
+            <AddReviewPageContainerWrapped/>
+          </PrivateRouteContainer>
           <Route path={`${PathName.MOVIE_PAGE}:id`}>
             <MoviePageContainerWrapped/>
           </Route>

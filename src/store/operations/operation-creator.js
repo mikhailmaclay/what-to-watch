@@ -50,16 +50,32 @@ const OperationCreator = {
         dispatch(ActionCreator.changeMovieStatus(movieID, isInMyList));
       });
   },
-  addReview: (movieID, review) => (dispatch, _, api) => api.post(`/comments/${movieID}`, review)
-    .then(({data}) => dispatch(ActionCreator.addReview(data))),
-  login: (email, password) => (dispatch, _, api) => api.post(`/login`, {email, password})
-    .then(({data}) => {
-      const user = adaptUser(data);
+  addReview: (movieID, review) => (dispatch, _, api) => {
+    dispatch(ActionCreator.startFetching());
 
-      dispatch(ActionCreator.authorize(user));
+    return api.post(`/comments/${movieID}`, review)
+      .then(() => {
+        history.push(PathName.MOVIE_PAGE + movieID);
 
-      history.goBack();
-    }),
+        dispatch(ActionCreator.showNotification(`Success`, `Your review has been successfully added.`));
+      })
+      .finally(() => dispatch(ActionCreator.endFetching()));
+  },
+  login: (email, password) => (dispatch, _, api) => {
+    dispatch(ActionCreator.startFetching());
+
+    return api.post(`/login`, {email, password})
+      .then(({data}) => {
+        const user = adaptUser(data);
+
+        history.goBack();
+
+        dispatch(ActionCreator.authorize(user));
+      })
+      .finally(() => {
+        dispatch(ActionCreator.endFetching());
+      });
+  },
   checkAuthorization: () => (dispatch, _, api) => api.get(`/login`)
     .then(({data}) => {
       const user = adaptUser(data);

@@ -13,7 +13,9 @@ const ActionCreator = {
   deauthorize: () => ({type: ActionType.DEAUTHORIZE}),
   showNotification: (title, content) => ({type: ActionType.SHOW_NOTIFICATION, payload: {title, content}}),
   hideNotification: () => ({type: ActionType.HIDE_NOTIFICATION}),
-  changeMovieStatus: (movieID, status) => ({type: ActionType.CHANGE_MOVIE_STATUS, payload: {id: movieID, isInMyList: status}})
+  changeMovieStatus: (movieID, status) => ({type: ActionType.CHANGE_MOVIE_STATUS, payload: {id: movieID, isInMyList: status}}),
+  startFetching: () => ({type: ActionType.START_FETCHING}),
+  endFetching: () => ({type: ActionType.END_FETCHING})
 };
 
 export default ActionCreator;

@@ -31,7 +31,7 @@ function SignInPageContainer(props) {
 
 SignInPageContainer.propTypes = propTypes;
 
-const mapStateToProps = ({user, notification}) => ({user, notification});
+const mapStateToProps = ({user, notification, isFetching}) => ({user, notification, isFetching});
 
 const mapDispatchToProps = (dispatch) => ({
   login: (email, password) => dispatch(OperationCreator.login(email, password))

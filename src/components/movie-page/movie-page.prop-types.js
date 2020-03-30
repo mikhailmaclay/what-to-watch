@@ -19,5 +19,6 @@ export default {
     isInMyList: PropTypes.bool.isRequired
   }),
   baseURL: PropTypes.string.isRequired,
+  isAuthorized: PropTypes.bool.isRequired,
   changeMovieStatus: PropTypes.func.isRequired
 };

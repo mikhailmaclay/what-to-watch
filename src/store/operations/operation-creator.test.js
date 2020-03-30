@@ -152,7 +152,24 @@ describe(`Operations`, () => {
   });
 
   it(`addReview should make a correct API call to /comments/:movieID`, () => {
-    // TODO
+    const store = mockStore({
+      user: adaptUser(mockUser)
+    });
+    const mockAPI = new MockAdapter(api);
+    mockAPI
+      .onPost(`/comments/${FIRST_MOVIE_ID}`)
+      .reply(200, mockReview);
+    const dispatch = jest.fn();
+    const addReviewOperation = OperationCreator.addReview(FIRST_MOVIE_ID, {rating: 5, comment: `Hello World!`});
+
+    return addReviewOperation(dispatch, store.getState, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(3);
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: ActionType.SHOW_NOTIFICATION,
+          payload: {title: `Success`, content: `Your review has been successfully added.`},
+        });
+      });
   });
 
   it(`login should make a correct API call to /login`, () => {
@@ -161,12 +178,12 @@ describe(`Operations`, () => {
       .onPost(`/login`)
       .reply(200, mockUser);
     const dispatch = jest.fn();
-    const loadReviewsOperation = OperationCreator.login(`Oliver.conner@gmail.com`, ``);
+    const loginOperation = OperationCreator.login(`Oliver.conner@gmail.com`, ``);
 
-    return loadReviewsOperation(dispatch, () => {}, api)
+    return loginOperation(dispatch, () => {}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
+        expect(dispatch).toHaveBeenCalledTimes(3); // 3, так как происходит еще и диспетчеризация действий START_FETCHING и END_FETCHING
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.AUTHORIZE,
           payload: adaptUser(mockUser),
         });
@@ -179,9 +196,9 @@ describe(`Operations`, () => {
       .onGet(`/login`)
       .reply(200, mockUser);
     const dispatch = jest.fn();
-    const loadReviewsOperation = OperationCreator.checkAuthorization();
+    const checkAuthorizationOperation = OperationCreator.checkAuthorization();
 
-    return loadReviewsOperation(dispatch, () => {}, api)
+    return checkAuthorizationOperation(dispatch, () => {}, api)
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {

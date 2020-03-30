@@ -12,7 +12,7 @@ import Header from '../header/header';
 import Icon from '../icon/icon';
 import Link from '../link/link';
 
-function MovieHeader({id, name, background, genre, releaseDate, isInMyList, changeMovieStatus}) {
+function MovieHeader({id, name, background, genre, releaseDate, isInMyList, isAuthorized, changeMovieStatus}) {
   const [backgroundColor, backgroundImage] = background;
 
   const handleMyListButtonClick = () => {
@@ -42,7 +42,7 @@ function MovieHeader({id, name, background, genre, releaseDate, isInMyList, chan
               <Icon name={isInMyList ? `in-list` : `add`} width="19" height="20"/>
               <span>My list</span>
             </Button>
-            <Link to={PathName.MOVIE_PAGE + id + `/review`} className="btn movie-card__button">Add review</Link>
+            {isAuthorized && <Link to={PathName.MOVIE_PAGE + id + `/review`} className="btn movie-card__button">Add review</Link>}
           </div>
         </div>
       </div>
