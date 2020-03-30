@@ -40,6 +40,7 @@ export const PathName = {
   MOVIE_PAGE: `/films/`,
   WATCH: `/watch/`,
   SIGN_IN: `/sign-in`,
+  MY_LIST: `/my-list`,
   SERVER: `https://htmlacademy-react-3.appspot.com`
 };
 

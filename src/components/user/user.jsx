@@ -2,6 +2,9 @@
 import React from 'react';
 // PropTypes
 import propTypes from './user.prop-types';
+// Constants and utils
+import {PathName} from '../../constants/consts';
+// Components
 import Link from '../link/link';
 
 function User({name, avatar}) {
@@ -11,7 +14,9 @@ function User({name, avatar}) {
     <div className="user-block">
       {hasUser ?
         <div className="user-block__avatar">
-          <img src={avatar} alt={name} width="63" height="63"/>
+          <Link to={PathName.MY_LIST}>
+            <img src={avatar} alt={name} width="63" height="63"/>
+          </Link>
         </div>
         :
         <Link to="/sign-in" className="user-block__link">Sign in</Link>

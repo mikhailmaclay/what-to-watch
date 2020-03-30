@@ -20,6 +20,9 @@ function App() {
           <Route path={PathName.ROOT} exact>
             <MainContainer/>
           </Route>
+          <PrivateRouteContainer path={PathName.MY_LIST}>
+            TODO
+          </PrivateRouteContainer>
           <PrivateRouteContainer path={`${PathName.MOVIE_PAGE}:id/review`} exact>
             <AddReviewPageContainerWrapped/>
           </PrivateRouteContainer>
