@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<User/> Should render correctly 1`] = `
+<div
+  className="user-block"
+>
+  <div
+    className="user-block__avatar"
+  >
+    <a
+      href="/my-list"
+      onClick={[Function]}
+    >
+      <img
+        alt="Johnny"
+        height="63"
+        src="https://htmlacademy-react-3.appspot.com/wtw/static/avatar/4.jpg"
+        width="63"
+      />
+    </a>
+  </div>
+</div>
+`;

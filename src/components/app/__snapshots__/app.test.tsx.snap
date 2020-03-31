@@ -1,0 +1,292 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App/> Should be rendered correctly 1`] = `
+Array [
+  <section
+    className="movie-card"
+  >
+    <div
+      className="movie-card__bg"
+      style={
+        Object {
+          "backgroundColor": "#AD9F8B",
+        }
+      }
+    >
+      <img
+        alt="Dardjeeling Limited"
+        src="https://htmlacademy-react-3.appspot.com/wtw/static/film/background/Dardjeeling_Limited.jpg"
+      />
+    </div>
+    <h1
+      className="visually-hidden"
+    >
+      WTW
+    </h1>
+    <header
+      className="page-header movie-card__head"
+    >
+      <div
+        className="logo"
+      >
+        <a
+          className="logo__link "
+          href={null}
+          onClick={null}
+        >
+          <span
+            className="logo__letter logo__letter--1"
+          >
+            W
+          </span>
+          <span
+            className="logo__letter logo__letter--2"
+          >
+            T
+          </span>
+          <span
+            className="logo__letter logo__letter--3"
+          >
+            W
+          </span>
+        </a>
+      </div>
+      <div
+        className="user-block"
+      >
+        <div
+          className="user-block__avatar"
+        >
+          <a
+            href="/my-list"
+            onClick={[Function]}
+          >
+            <img
+              alt="Johnny"
+              height="63"
+              src="https://htmlacademy-react-3.appspot.com/wtw/static/avatar/4.jpg"
+              width="63"
+            />
+          </a>
+        </div>
+      </div>
+    </header>
+    <div
+      className="movie-card__wrap"
+    >
+      <div
+        className="movie-card__info"
+      >
+        <div
+          className="movie-card__poster"
+        >
+          <img
+            alt="Dardjeeling Limited"
+            height="327"
+            src="https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Dardjeeling_Limited.jpg"
+            width="218"
+          />
+        </div>
+        <div
+          className="movie-card__desc"
+        >
+          <h2
+            className="movie-card__title"
+          >
+            <a
+              href="/films/1"
+              onClick={[Function]}
+            >
+              Dardjeeling Limited
+            </a>
+          </h2>
+          <p
+            className="movie-card__meta"
+          >
+            <span
+              className="movie-card__genre"
+            >
+              Adventure
+            </span>
+            <span
+              className="movie-card__year"
+            >
+              January 01, 2007
+            </span>
+          </p>
+          <div
+            className="movie-card__buttons"
+          >
+            <a
+              className="btn btn--play movie-card__button"
+              href="/films/1/player"
+              onClick={[Function]}
+            >
+              <svg
+                height="19"
+                viewBox="0 0 19 19"
+                width="19"
+              >
+                <use
+                  xlinkHref="#play-s"
+                />
+              </svg>
+              <span>
+                Play
+              </span>
+            </a>
+            <button
+              className="btn btn--list movie-card__button"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                height="20"
+                viewBox="0 0 20 20"
+                width="20"
+              >
+                <use
+                  xlinkHref="#add"
+                />
+              </svg>
+              <span>
+                My list
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>,
+  <div
+    className="page-content"
+  >
+    <section
+      className="catalog"
+    >
+      <h2
+        className="visually-hidden"
+      >
+        Catalog
+      </h2>
+      <ul
+        className="catalog__genres-list"
+      >
+        <li
+          className="catalog__genres-item catalog__genres-item--active"
+        >
+          <button
+            className="catalog__genres-link"
+            disabled={true}
+            onClick={null}
+            style={
+              Object {
+                "background": "transparent",
+                "border": "none",
+                "cursor": "",
+                "paddingLeft": "0",
+                "paddingRight": "0",
+                "userSelect": "none",
+              }
+            }
+            type="button"
+          >
+            All genres
+          </button>
+        </li>
+        <li
+          className="catalog__genres-item "
+        >
+          <button
+            className="catalog__genres-link"
+            disabled={false}
+            href="#"
+            onClick={[Function]}
+            style={
+              Object {
+                "background": "transparent",
+                "border": "none",
+                "cursor": "pointer",
+                "paddingLeft": "0",
+                "paddingRight": "0",
+                "userSelect": "none",
+              }
+            }
+            type="button"
+          >
+            Adventure
+          </button>
+        </li>
+      </ul>
+      <div
+        className="catalog__movie-list"
+      >
+        <article
+          className="small-movie-card catalog__movie-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <a
+            className="small-movie-card__image"
+            href="/films/1"
+            onClick={[Function]}
+          >
+            <img
+              alt="Dardjeeling Limited"
+              height="175"
+              src="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/dardjeeling_limited.jpg"
+              width="280"
+            />
+          </a>
+          <h3
+            className="small-movie-card__title"
+          >
+            <span
+              className="small-movie-card__link"
+            >
+              Dardjeeling Limited
+            </span>
+          </h3>
+        </article>
+      </div>
+    </section>
+    <footer
+      className="page-footer"
+    >
+      <div
+        className="logo"
+      >
+        <a
+          className="logo__link logo__link--light"
+          href={null}
+          onClick={null}
+        >
+          <span
+            className="logo__letter logo__letter--1"
+          >
+            W
+          </span>
+          <span
+            className="logo__letter logo__letter--2"
+          >
+            T
+          </span>
+          <span
+            className="logo__letter logo__letter--3"
+          >
+            W
+          </span>
+        </a>
+      </div>
+      <div
+        className="copyright"
+      >
+        <p>
+          © 2019 What to watch Ltd.
+        </p>
+      </div>
+    </footer>
+  </div>,
+]
+`;

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MovieList/> Should render correctly 1`] = `
+<div
+  className="catalog__movie-list"
+>
+  <article
+    className="small-movie-card catalog__movie-card"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <a
+      className="small-movie-card__image"
+      href="/films/1"
+      onClick={[Function]}
+    >
+      <img
+        alt="Dardjeeling Limited"
+        height="175"
+        src="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/dardjeeling_limited.jpg"
+        width="280"
+      />
+    </a>
+    <h3
+      className="small-movie-card__title"
+    >
+      <span
+        className="small-movie-card__link"
+      >
+        Dardjeeling Limited
+      </span>
+    </h3>
+  </article>
+</div>
+`;
