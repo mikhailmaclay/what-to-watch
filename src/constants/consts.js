@@ -57,3 +57,7 @@ export const FilterName = {
     ID: `FILTER_USER_ID`
   }
 };
+
+export const KeyCode = {
+  ESC: `Escape`
+};
