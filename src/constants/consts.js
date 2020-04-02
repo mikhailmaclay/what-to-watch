@@ -32,14 +32,12 @@ export const Config = {
   MAX_REVIEW_LENGTH: 400
 };
 
-export const NO_SPECIAL_MOVIE = -1;
-
 export const PathName = {
   ROOT: `/`,
   MOVIE_FILTER: `/films`,
   MOVIE_PAGE: `/films/`,
   SIGN_IN: `/login`,
-  MY_LIST: `/my-list`,
+  MY_LIST: `/mylist`,
   SERVER: `https://htmlacademy-react-3.appspot.com`
 };
 
@@ -58,33 +56,4 @@ export const FilterName = {
   USERS: {
     ID: `FILTER_USER_ID`
   }
-};
-
-export const SelectorName = {
-  MOVIES: {
-    GENRES: `SELECTOR_MOVIES_GENRES`
-  },
-  MOVIE: {
-    TEAM: `SELECTOR_MOVIE_TEAM`,
-    RATINGS: `SELECTOR_MOVIE_RATINGS`
-  }
-};
-
-export const ConverterName = {
-  RATING: {
-    LEVEL: `CONVERTER_RATING_LEVEL`
-  }
-};
-
-export const AdapterName = {
-  MOVIE: `ADAPTER_MOVIE`
-};
-
-export const KeyCode = {
-  ESC: `Escape`
-};
-
-export const AuthorizationStatus = {
-  AUTHORIZED: `AUTHORIZED`,
-  UNAUTHORIZED: `UNAUTHORIZED`
 };

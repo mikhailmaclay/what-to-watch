@@ -88,7 +88,7 @@ exports[`<AddReviewPage/> Should render correctly 1`] = `
           className="user-block__avatar"
         >
           <a
-            href="/my-list"
+            href="/mylist"
             onClick={[Function]}
           >
             <img
@@ -154,6 +154,7 @@ exports[`<AddReviewPage/> Should render correctly 1`] = `
           </label>
           <input
             className="rating__input visually-hidden"
+            defaultChecked={true}
             id="star-3"
             name="rating"
             type="radio"

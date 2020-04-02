@@ -13,19 +13,19 @@ interface Props {
   id: number;
   name: string;
   genre: string;
-  background: string[];
+  backgrounds: string[];
   releaseDate: string;
   isInMyList: boolean;
   isAuthorized: boolean;
-  changeMovieStatus: (movieID: number, status: number) => void;
+  onChangeMovieStatus: (movieID: number, status: number) => void;
 }
 
 function MovieHeader(props: Props) {
-  const {id, name, background, genre, releaseDate, isInMyList, isAuthorized, changeMovieStatus} = props;
-  const [backgroundColor, backgroundImage] = background;
+  const {id, name, backgrounds, genre, releaseDate, isInMyList, isAuthorized, onChangeMovieStatus} = props;
+  const [backgroundColor, backgroundImage] = backgrounds;
 
   const handleMyListButtonClick = () => {
-    changeMovieStatus(id, Number(!isInMyList));
+    onChangeMovieStatus(id, Number(!isInMyList));
   };
 
   return (

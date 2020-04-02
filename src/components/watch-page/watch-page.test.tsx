@@ -10,7 +10,7 @@ describe(`<WatchPage/>`, () => {
   const props = {
     id: 1,
     name: `Hello World`,
-    background: [`black`, ``],
+    backgrounds: [`black`, ``],
     video: ``,
     onClose: emptyArrowFunction
   };

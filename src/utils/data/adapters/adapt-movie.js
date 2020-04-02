@@ -12,7 +12,7 @@ function adaptMovie(movieDataItem) {
     ],
     poster: movieDataItem[`poster_image`],
     images: [movieDataItem[`preview_image`]],
-    background: [movieDataItem[`background_color`], movieDataItem[`background_image`]],
+    backgrounds: [movieDataItem[`background_color`], movieDataItem[`background_image`]],
     rating: movieDataItem.rating,
     scoresCount: movieDataItem[`scores_count`],
     preview: movieDataItem[`preview_video_link`],

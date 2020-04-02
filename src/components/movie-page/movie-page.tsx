@@ -36,7 +36,7 @@ interface Props {
 
 function MoviePage(props: Props) {
   const {movie, baseURL, isAuthorized, changeMovieStatus} = props;
-  const {id, name, genre, releaseDate, description, runTime, directors, actors, rating, scoresCount, level, poster, background, similarMovies, isInMyList} = movie;
+  const {id, name, genre, releaseDate, description, runTime, directors, actors, rating, scoresCount, level, poster, backgrounds, similarMovies, isInMyList} = movie;
 
   const detailsPathname = `${baseURL}/details`;
   const reviewsPathname = `${baseURL}/reviews`;
@@ -60,7 +60,7 @@ function MoviePage(props: Props) {
   return (
     <>
       <section className="movie-card movie-card--full">
-        <MovieHeader id={id} name={name} releaseDate={releaseDate} genre={genre} background={background} changeMovieStatus={changeMovieStatus} isInMyList={isInMyList} isAuthorized={isAuthorized}/>
+        <MovieHeader id={id} name={name} releaseDate={releaseDate} genre={genre} backgrounds={backgrounds} onChangeMovieStatus={changeMovieStatus} isInMyList={isInMyList} isAuthorized={isAuthorized}/>
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <MoviePoster className="movie-card__poster movie-card__poster--big" src={poster} alt={name}/>

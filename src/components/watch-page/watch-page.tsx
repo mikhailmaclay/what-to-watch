@@ -11,13 +11,13 @@ const BACKGROUND_IMAGE_INDEX = 1;
 interface Props {
   name: string;
   video: string;
-  background: string[];
+  backgrounds: string[];
   onClose: () => void;
 }
 
 function WatchPage(props: Props) {
-  const {name, video, background, onClose} = props;
-  const backgroundImage = background[BACKGROUND_IMAGE_INDEX];
+  const {name, video, backgrounds, onClose} = props;
+  const backgroundImage = backgrounds[BACKGROUND_IMAGE_INDEX];
 
   return (
     <div className="player" style={styles.player}>

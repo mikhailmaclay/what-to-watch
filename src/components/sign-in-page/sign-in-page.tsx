@@ -24,7 +24,7 @@ class SignInPage extends React.PureComponent<Props, {}> {
 
     bind(this,
         this.prepareForm,
-        this.handleSubmit
+        this.handleSignInFormSubmit
     );
   }
 
@@ -44,7 +44,7 @@ class SignInPage extends React.PureComponent<Props, {}> {
     });
   }
 
-  handleSubmit(evt) {
+  handleSignInFormSubmit(evt) {
     const {login} = this.props;
     const email = this.emailRef.current.value;
     const password = this.passwordRef.current.value;
@@ -63,7 +63,7 @@ class SignInPage extends React.PureComponent<Props, {}> {
           <h1 className="page-title user-page__title">Sign in</h1>
         </Header>
         <div className="sign-in user-page__content">
-          <form action="#" className="sign-in__form" onSubmit={this.handleSubmit}>
+          <form action="#" className="sign-in__form" onSubmit={this.handleSignInFormSubmit}>
             {message &&
               <div className="sign-in__message">
                 <p>{message}</p>

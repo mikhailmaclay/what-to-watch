@@ -29,7 +29,7 @@ class AddReviewPage extends React.PureComponent<Props, {}> {
     bind(this,
         this.validateForm,
         this.prepareForm,
-        this.handleSubmit
+        this.handleReviewFormSubmit
     );
   }
 
@@ -70,7 +70,7 @@ class AddReviewPage extends React.PureComponent<Props, {}> {
     });
   }
 
-  handleSubmit(evt) {
+  handleReviewFormSubmit(evt) {
     evt.preventDefault();
 
     const {addReview, movie} = this.props;
@@ -84,8 +84,8 @@ class AddReviewPage extends React.PureComponent<Props, {}> {
 
   render() {
     const {movie, baseURL} = this.props;
-    const {name, poster, background} = movie;
-    const [backgroundColor, backgroundImage] = background;
+    const {name, poster, backgrounds} = movie;
+    const [backgroundColor, backgroundImage] = backgrounds;
 
     return (
       <section className="movie-card movie-card--full">
@@ -113,7 +113,7 @@ class AddReviewPage extends React.PureComponent<Props, {}> {
         </div>
 
         <div className="add-review">
-          <form ref={this.reviewFormRef} action="#" className="add-review__form" onSubmit={this.handleSubmit}>
+          <form ref={this.reviewFormRef} action="#" className="add-review__form" onSubmit={this.handleReviewFormSubmit}>
             <div className="rating">
               <div className="rating__stars">
                 <input className="rating__input visually-hidden" id="star-1" type="radio" name="rating" value="1"/>
@@ -122,7 +122,7 @@ class AddReviewPage extends React.PureComponent<Props, {}> {
                 <input className="rating__input visually-hidden" id="star-2" type="radio" name="rating" value="2"/>
                 <label className="rating__label" htmlFor="star-2">Rating 2</label>
 
-                <input className="rating__input visually-hidden" id="star-3" type="radio" name="rating" value="3"/>
+                <input className="rating__input visually-hidden" id="star-3" type="radio" name="rating" value="3" defaultChecked/>
                 <label className="rating__label" htmlFor="star-3">Rating 3</label>
 
                 <input className="rating__input visually-hidden" id="star-4" type="radio" name="rating" value="4"/>

@@ -46,7 +46,7 @@ function MoviePageContainer(props: Props) {
     directors: selectTeamMembersByRole(`Director`)(movie.team),
     actors: selectTeamMembersByRole(`Actor`)(movie.team),
     poster: movie.poster,
-    background: movie.background,
+    backgrounds: movie.backgrounds,
     similarMovies: filterMoviesByGenre(movie.genre, movieID)(movies).slice(BEGINNING_OF_AN_ARRAY, Config.SIMILAR_MOVIES_COUNT),
     isInMyList: movie.isInMyList
   };

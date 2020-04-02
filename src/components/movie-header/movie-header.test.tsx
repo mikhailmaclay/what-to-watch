@@ -19,12 +19,12 @@ describe(`<MovieHeader/>`, () => {
   const props = {
     id: 1,
     name: `The Grand Budapest Hotel`,
-    background: [`black`, `/img/movies/backgrounds/1.jpg`],
+    backgrounds: [`black`, `/img/movies/backgrounds/1.jpg`],
     genre: `Drama`,
     releaseDate: `March 13, 2014`,
     isInMyList: true,
     isAuthorized: false,
-    changeMovieStatus: emptyArrowFunction
+    onChangeMovieStatus: emptyArrowFunction
   };
 
   it(`Should render correctly`, () => {

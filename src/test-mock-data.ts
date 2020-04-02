@@ -43,7 +43,7 @@ export const mockMovie: Movie = {
   images: [
     `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/dardjeeling_limited.jpg`
   ],
-  background: [
+  backgrounds: [
     `#AD9F8B`,
     `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/Dardjeeling_Limited.jpg`
   ],

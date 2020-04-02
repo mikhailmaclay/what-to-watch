@@ -29,7 +29,7 @@ function WatchPageContainer(props: Props) {
   const propsToComponent = {
     name: movie.name,
     video: movie.video,
-    background: movie.background,
+    backgrounds: movie.backgrounds,
     onClose: () => history.push(PathName.MOVIE_PAGE + movieID)
   };
 

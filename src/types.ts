@@ -8,7 +8,7 @@ export interface Movie {
   team: TeamMember[],
   poster: string,
   images: string[],
-  background: string[],
+  backgrounds: string[],
   rating: number,
   scoresCount: number,
   preview: string,

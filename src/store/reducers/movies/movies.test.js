@@ -36,7 +36,7 @@ const mockMovie = {
   images: [
     `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/A_Star_Is_Born.jpg`
   ],
-  background: [
+  backgrounds: [
     `#C4C0C0`,
     `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/A_Star_is_Born.jpg`
   ],

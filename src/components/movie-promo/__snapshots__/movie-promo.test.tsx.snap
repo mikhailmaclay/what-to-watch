@@ -57,7 +57,7 @@ exports[`<MoviePromo/> should render correctly 1`] = `
         className="user-block__avatar"
       >
         <a
-          href="/my-list"
+          href="/mylist"
           onClick={[Function]}
         >
           <img

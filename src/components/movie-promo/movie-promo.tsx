@@ -30,8 +30,8 @@ function MoviePromo(props: Props) {
     );
   }
 
-  const {id, name, genre, releaseDate, poster, background, isInMyList} = specialMovie;
-  const [backgroundColor, backgroundImage] = background;
+  const {id, name, genre, releaseDate, poster, backgrounds, isInMyList} = specialMovie;
+  const [backgroundColor, backgroundImage] = backgrounds;
 
   const handleMyListButtonClick = () => {
     changeMovieStatus(id, Number(!isInMyList));
