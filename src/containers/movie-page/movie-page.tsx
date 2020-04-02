@@ -21,11 +21,11 @@ interface Props {
   movies: Movie[];
   isAuthorized: boolean;
   match: {params: {id: string}};
-  changeMovieStatus: (movieID: number, status: number) => void;
+  onChangeMovieStatus: (movieID: number, status: number) => void;
 }
 
 function MoviePageContainer(props: Props) {
-  const {movies, changeMovieStatus, isAuthorized, match} = props;
+  const {movies, onChangeMovieStatus, isAuthorized, match} = props;
   const movieID = parseInt(match.params.id, 10);
   const movie = selectMovieByID(movieID)(movies);
 
@@ -52,7 +52,7 @@ function MoviePageContainer(props: Props) {
   };
 
   const propsToComponent = {
-    changeMovieStatus,
+    onChangeMovieStatus,
     isAuthorized,
     movie: tempMovie,
     baseURL: PathName.MOVIE_PAGE + movieID
@@ -67,7 +67,7 @@ const mapStateToProps = ({movies, user}) => ({
 });
 
 const mapDispatchToProps = (dispatch) =>({
-  changeMovieStatus: (movieID, status) => {
+  onChangeMovieStatus: (movieID, status) => {
     dispatch(OperationCreator.changeMovieStatus(movieID, status));
   }
 });

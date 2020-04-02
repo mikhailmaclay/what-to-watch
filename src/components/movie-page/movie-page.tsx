@@ -31,11 +31,11 @@ interface Props {
   movie: ExtendedMovie;
   baseURL: string;
   isAuthorized: boolean;
-  changeMovieStatus: (movieID: number, status: number) => void;
+  onChangeMovieStatus: (movieID: number, status: number) => void;
 }
 
 function MoviePage(props: Props) {
-  const {movie, baseURL, isAuthorized, changeMovieStatus} = props;
+  const {movie, baseURL, isAuthorized, onChangeMovieStatus} = props;
   const {id, name, genre, releaseDate, description, runTime, directors, actors, rating, scoresCount, level, poster, backgrounds, similarMovies, isInMyList} = movie;
 
   const detailsPathname = `${baseURL}/details`;
@@ -60,7 +60,7 @@ function MoviePage(props: Props) {
   return (
     <>
       <section className="movie-card movie-card--full">
-        <MovieHeader id={id} name={name} releaseDate={releaseDate} genre={genre} backgrounds={backgrounds} onChangeMovieStatus={changeMovieStatus} isInMyList={isInMyList} isAuthorized={isAuthorized}/>
+        <MovieHeader id={id} name={name} releaseDate={releaseDate} genre={genre} backgrounds={backgrounds} onChangeMovieStatus={onChangeMovieStatus} isInMyList={isInMyList} isAuthorized={isAuthorized}/>
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <MoviePoster className="movie-card__poster movie-card__poster--big" src={poster} alt={name}/>

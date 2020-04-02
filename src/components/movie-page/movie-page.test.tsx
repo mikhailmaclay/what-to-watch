@@ -32,7 +32,7 @@ describe(`<MoviePage/>`, () => {
     movie: store.getState().movies[FIRST_MOVIE_INDEX],
     baseURL: PathName.MOVIE_PAGE + store.getState().movies[FIRST_MOVIE_INDEX].id,
     isAuthorized: false,
-    changeMovieStatus: emptyArrowFunction
+    onChangeMovieStatus: emptyArrowFunction
   };
 
   it(`Should render correctly`, () => {
